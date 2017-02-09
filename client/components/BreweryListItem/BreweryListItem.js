@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import styles from './BreweryListItem.css';
-// import InfoButton from 'material-ui/IconButton';
+import IconButton from 'material-ui/IconButton';
+import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline';
+
 
 class BreweryList extends React.Component {
   constructor(props) {
@@ -19,16 +21,16 @@ class BreweryList extends React.Component {
   // <Link href={"tel:" + this.cleanedPhoneNumber }>
   //   <p className={styles.details}>{this.phoneNumber}</p>
   // </Link>
-          // <Link href={this.website}>
-          //   <p className={styles.details}>{this.website}</p>
-          // </Link>
+  //         <Link href={this.website}>
+  //           <p className={styles.details}>{this.website}</p>
+  //         </Link>
 
   render() {
     return (
       <div className={styles.cell} >
-        <Link className={styles.moreInfo} to="/modal">
-          <i className="material-icons">info_outline</i>
-        </Link>
+          <IconButton>
+            <ActionInfoOutline />
+          </IconButton>
         <Link to={`/${this.props.city}/${this.props.brewery.brewery.name}`}>
             <img className={styles.cover} src={this.squareImage} />
         </Link>
