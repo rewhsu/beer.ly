@@ -61,8 +61,8 @@ class Beers extends React.Component {
     console.log(error);
   }
 
-  handleChange = (inputValue) => {
-    this.setState({searchInput: inputValue});
+  handleChange = (event) => {
+    this.setState({searchInput: event.target.value});
   }
 
 
@@ -71,24 +71,21 @@ class Beers extends React.Component {
       <div className={styles.wrapper}>
         <div className={styles.title}>
           <h1>{this.props.params.brewery}</h1>
-          {console.log('beers: ', this.state.beers)}
           <p className={styles.details}><strong>{this.state.beers.length}</strong> beers to choose from!</p>
         
-        <div className={styles.filterBeer}>
-          <AutoComplete
-            dataSource={this.state.beers}
-            onUpdateInput={this.handleChange}
-            floatingLabelText="Search beers..."
-            inputStyle={inlineStyles.inputStyle}
-            underlineFocusStyle={inlineStyles.underlineStyle}
-            floatingLabelStyle={inlineStyles.floatingLabelStyle}
-            value={this.state.searchInput}
-          />
+          <div className={styles.filterBeer}>
+            <div className="right-inner-addon">
+                <i className="icon-search"></i>
+                <input type="search"
+                  className="form-control" 
+                  placeholder="Search"
+                  value={this.state.searchInput}
+                  onChange={this.handleChange}
+                />
+            </div>
+          </div>
         </div>
-
-        </div>
-        
-       
+        <br></br>
         <div>
           {this.props.cart.length > 0 ? <BeerCart beers={this.props.cart} removeFromCart={this.props.removeFromCart} inCheckout={this.props.inCheckout} checkout={this.props.checkout} /> : null}
           {this.props.inCheckout ?
