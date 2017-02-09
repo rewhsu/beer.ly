@@ -17,8 +17,8 @@ const mockImages = [
 const BeerItem = (props) => {
   const handleClick = () => {
     const beer = {
-      name: props.beer.name,
-      image: mockImages[props.beer.style.id % mockImages.length]
+      name: props.beer.beer_name,
+      image: props.beer.beer_label
     };
     props.addToCart(beer);
   };
@@ -39,9 +39,9 @@ const BeerItem = (props) => {
   return (
     <div className={styles.cell}>
       <div className={styles.title}>
-        {props.beer.name}
+        {props.beer.beer_name}
       </div>
-      <img src={mockImages[props.beer.style.id % mockImages.length]} className={styles.image} />
+      <img src={props.beer.beer_label} className={styles.image} />
       { /* Optional information handlers */ }
       { abvHandler() } { descriptionHandler() }
       <button className={styles.addButton} onClick={handleClick} >Add to Flight</button>

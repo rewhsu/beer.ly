@@ -3,8 +3,9 @@ import BeerItem from '../BeerItem/BeerItem';
 import styles from './BeerList.css';
 
 const BeerList = (props) => {
+  console.log('props.beers', props.beers);
   const beers = props.beers.map((beer) => {
-    return <BeerItem key={beer.id} beer={beer} className={styles.beerItem} isBeingRenderedInCart={false} addToCart={props.addToCart} />;
+    return <BeerItem key={beer.bid} beer={beer.beer} className={styles.beerItem} isBeingRenderedInCart={false} addToCart={props.addToCart} />;
   });
 
   return (
