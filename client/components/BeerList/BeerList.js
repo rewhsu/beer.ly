@@ -9,12 +9,11 @@ const BeerList = (props) => {
       return <BeerItem key={beer.beer.bid} beer={beer.beer} className={styles.beerItem} isBeingRenderedInCart={false} addToCart={props.addToCart} />;
     }
   });
-
   return (
-	  <div className={styles.grid}>
-			{beers}
-	  </div>
-	);
+    <div className={styles.grid}>
+      {beers}
+    </div>
+  );
 };
 
 BeerList.propTypes = {

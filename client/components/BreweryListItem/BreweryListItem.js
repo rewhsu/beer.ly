@@ -1,11 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router';
 import styles from './BreweryListItem.css';
-// import InfoButton from 'material-ui/IconButton';
+import IconButton from 'material-ui/IconButton';
+import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+
+const iconStyles = {
+  position: 'fixed',
+  top: 0,
+  width: 100,
+};
+
 
 class BreweryList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      open: false
+    };
 
     const breweryInfo = this.props.brewery.brewery;
 
@@ -16,19 +29,54 @@ class BreweryList extends React.Component {
     this.cleanedPhoneNumber = this.phoneNumber.replace(/["'() -]/g, '');
   }
 
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
+
   // <Link href={"tel:" + this.cleanedPhoneNumber }>
   //   <p className={styles.details}>{this.phoneNumber}</p>
   // </Link>
-          // <Link href={this.website}>
-          //   <p className={styles.details}>{this.website}</p>
-          // </Link>
+  //         <Link href={this.website}>
+  //           <p className={styles.details}>{this.website}</p>
+  //         </Link>
 
   render() {
+    const actions = [
+      <FlatButton
+        label="Close"
+        primary={true}
+        onTouchTap={this.handleClose}
+      />
+    ];
+
     return (
       <div className={styles.cell} >
-        <Link className={styles.moreInfo} to="/modal">
-          <i className="material-icons">info_outline</i>
-        </Link>
+
+        <div>
+          <IconButton onTouchTap={this.handleOpen}>
+            <ActionInfoOutline style={iconStyles} />
+            <Dialog
+              title={this.props.brewery.brewery.name}
+              actions={actions}
+              modal={true}
+              open={this.state.open}
+              autoScrollBodyContent={true}
+            >
+              <br />
+              <br />
+              {this.description}
+              <br />
+              <br />
+              Tel: {this.phoneNumber}
+
+            </Dialog>
+          </IconButton>
+        </div>
+
         <Link to={`/${this.props.city}/${this.props.brewery.brewery.name}`}>
             <img className={styles.cover} src={this.squareImage} />
         </Link>
