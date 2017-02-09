@@ -4,6 +4,12 @@ import styles from './BreweryListItem.css';
 import IconButton from 'material-ui/IconButton';
 import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline';
 
+const iconStyles = {
+  position: 'fixed',
+  top: 0,
+  width: 100,
+};
+
 
 class BreweryList extends React.Component {
   constructor(props) {
@@ -28,9 +34,11 @@ class BreweryList extends React.Component {
   render() {
     return (
       <div className={styles.cell} >
+        <div>
           <IconButton>
-            <ActionInfoOutline />
+            <ActionInfoOutline style={iconStyles}/>
           </IconButton>
+        </div>
         <Link to={`/${this.props.city}/${this.props.brewery.brewery.name}`}>
             <img className={styles.cover} src={this.squareImage} />
         </Link>
