@@ -15,3 +15,11 @@
   font-size: 1em;
   margin: 0;
 }
+
+.filterBeer {
+	position: relative;
+	display: inline-block;
+	float: right;
+	width: 200px;
+	vertical-align: top;
+}

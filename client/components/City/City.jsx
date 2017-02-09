@@ -2,13 +2,15 @@ import React, { PropTypes } from 'react';
 import axios from 'axios';
 import BreweryList from '../BreweryList/BreweryList';
 import styles from './City.css';
+import SearchFilter from '../SearchFilter/SearchFilter';
 
 class City extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       city: this.props.params.city,
-      breweries: []
+      breweries: [],
+      searchInput: ''
     };
   }
 
@@ -41,6 +43,10 @@ class City extends React.Component {
     console.log(error);
   }
 
+  handleChange = (event) => {
+    this.setState({searchInput: event.target.value});
+  }
+
   render() {
     return (
       <div className={styles.wrapper}>
@@ -48,7 +54,26 @@ class City extends React.Component {
           <h1>Breweries in {this.state.city}</h1>
           <p className={styles.details}>About {this.state.breweries.length} results ({(1 / this.state.breweries.length).toFixed(5)} seconds) </p>
         </div>
-        <BreweryList breweries={this.state.breweries} city={this.state.city}/>
+
+        <div className={styles.filterBrewery}>
+          <form>
+            <input 
+              type='text'
+              placeholder='Type to filter..'
+              // binding the input value to state
+              value={this.state.searchInput}
+              onChange={this.handleChange}
+            /> 
+          </form>
+        </div>
+          
+          <BreweryList 
+            breweries={this.state.breweries} 
+            city={this.state.city}          
+            filter={this.state.searchInput}
+          />
+          
+
       </div>
     );
   }

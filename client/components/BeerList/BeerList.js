@@ -3,9 +3,11 @@ import BeerItem from '../BeerItem/BeerItem';
 import styles from './BeerList.css';
 
 const BeerList = (props) => {
-  console.log('props.beers', props.beers);
+  const input = props.filter.toLowerCase();
   const beers = props.beers.map((beer) => {
-    return <BeerItem key={beer.bid} beer={beer.beer} className={styles.beerItem} isBeingRenderedInCart={false} addToCart={props.addToCart} />;
+    if (!input || !!beer.beer.beer_name.toLowerCase().includes(input)) {
+      return <BeerItem key={beer.beer.bid} beer={beer.beer} className={styles.beerItem} isBeingRenderedInCart={false} addToCart={props.addToCart} />;
+    }
   });
 
   return (
