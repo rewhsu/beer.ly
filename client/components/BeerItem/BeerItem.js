@@ -49,6 +49,7 @@ class BeerItem extends React.Component {
   }
 
   render() {  
+    console.log('props', this.props);
     const handleClick = () => {
       const beer = {
         name: this.props.beer.beer_name,
@@ -59,14 +60,14 @@ class BeerItem extends React.Component {
 
     // Handles situation when brewery does not supply information
     const abvHandler = () => {
-      return (this.props.beer.abv) ?
-        (<strong className={styles.abv}>{this.props.beer.abv}% ALC/VOL</strong>) :
-        (<strong className={styles.abv}>7.25% ALC/VOL</strong>);
+      return (this.props.beer.beer_abv) ?
+        (<strong className={styles.abv}>{this.props.beer.beer_abv}% ALC/VOL</strong>) :
+        (<strong className={styles.abv}>_.__% ALC/VOL</strong>);
     };
 
     const descriptionHandler = () => {
-      return (this.props.beer.description) ?
-        (<p className={styles.description}>{this.props.beer.description.substring(0, 60)}...</p>) :
+      return (this.props.beer.beer_style) ?
+        (<p className={styles.description}>{this.props.beer.beer_style}</p>) :
         (<p className={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed...</p>);
     };
 
