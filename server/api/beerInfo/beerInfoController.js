@@ -18,7 +18,7 @@ function fetchBeerInfoByBreweryId(beerID) {
 }
 
 exports.get = (req, res) => {
-  const bid = 3839;
+  const bid = req.params.bid;
 
   fetchBeerInfoByBreweryId(bid)
     .then((response) => {
