@@ -5,10 +5,14 @@ import styles from './BreweryList.css';
 class BreweryList extends React.Component {
 
   render() {
-    const breweries = this.props.breweries.map((brewery) => {
+    const input = this.props.filter.toLowerCase()
+    const breweries = this.props.breweries.map((brewery, i) => {
       // Only display breweries with images
       if (brewery.brewery.images !== undefined && brewery.brewery.images.squareMedium !== undefined) {
-        return <BreweryListItem key={brewery.brewery.id} brewery={brewery} city={this.props.city} />;
+        // Filter by search input
+         if (!input || !!brewery.brewery.name.toLowerCase().includes(input)) {
+          return <BreweryListItem key={brewery.brewery.id} brewery={brewery} city={this.props.city} />;
+        }
       }
     });
 

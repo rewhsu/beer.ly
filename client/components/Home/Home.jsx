@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from '../Search/Search';
+import SearchCities from '../SearchCities/SearchCities';
 import styles from './Home.css';
 
 class Home extends React.Component {
@@ -8,7 +8,7 @@ class Home extends React.Component {
       <div className={styles.home}>
         <div className={styles.container}>
           <div className={styles.searchField}>
-            <Search />
+            <SearchCities />
           </div>
         </div>
       </div>

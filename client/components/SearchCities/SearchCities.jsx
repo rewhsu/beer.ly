@@ -3,7 +3,7 @@ import AutoComplete from 'material-ui/AutoComplete';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 import _ from 'lodash';
-import styles from './Search.css';
+import styles from './SearchCities.css';
 
 const CancelToken = axios.CancelToken;
 
@@ -23,7 +23,7 @@ const inlineStyles = {
   },
 };
 
-class Search extends React.Component {
+class SearchCities extends React.Component {
   constructor(props) {
     super(props);
 
@@ -104,4 +104,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default SearchCities;
