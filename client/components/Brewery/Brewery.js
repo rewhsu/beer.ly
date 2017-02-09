@@ -6,26 +6,6 @@ import BeerCart from '../BeerCart/BeerCart';
 import Checkout from '../Checkout/Checkout';
 import styles from './Brewery.css';
 
-const inlineStyles = {
-  inputStyle: {
-    color: 'black',
-  },
-  underlineStyle: {
-    borderColor: 'black',
-  },
-  floatingLabelStyle: {
-    color: 'black',
-    'fontSize': '12px',
-  },
-  floatingLabelFocusStyle: {
-    color: 'black',
-  },
-};
-
-const dataSourceConfig = {
-  text: '',
-  value: 'valueKey',
-};
 
 class Beers extends React.Component {
   constructor(props) {

@@ -5,6 +5,9 @@ import IconButton from 'material-ui/IconButton';
 import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import LazyLoad from 'react-lazyload';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { default as Fade } from 'react-fade'
 
 const iconStyles = {
   position: 'fixed',
@@ -44,6 +47,7 @@ class BreweryList extends React.Component {
   //           <p className={styles.details}>{this.website}</p>
   //         </Link>
 
+
   render() {
     const actions = [
       <FlatButton
@@ -54,36 +58,52 @@ class BreweryList extends React.Component {
     ];
 
     return (
-      <div className={styles.cell} >
-
+      <div className={styles.cell}>
+      <LazyLoad throttle={300} height={100} scroll={true} offset={-50}>
+        <ReactCSSTransitionGroup key="1"
+          transitionName="fade"
+          transitionAppear={true}
+          transitionAppearTimeout={200}
+          transitionEnter={false}
+          transitionLeave={false}>
+      <Fade duration={.5}>
         <div>
-          <IconButton onTouchTap={this.handleOpen}>
-            <ActionInfoOutline style={iconStyles} />
-            <Dialog
-              title={this.props.brewery.brewery.name}
-              actions={actions}
-              modal={true}
-              open={this.state.open}
-              autoScrollBodyContent={true}
-            >
-              <br />
-              <br />
-              {this.description}
-              <br />
-              <br />
-              Tel: {this.phoneNumber}
+         
+            <div>
+              <IconButton onTouchTap={this.handleOpen}>
+                <ActionInfoOutline style={iconStyles} />
+                <Dialog
+                  title={this.props.brewery.brewery.name}
+                  actions={actions}
+                  modal={true}
+                  open={this.state.open}
+                  autoScrollBodyContent={true}
+                >
+                  <br />
+                  <br />
+                  {this.description}
+                  <br />
+                  <br />
+                  Tel: {this.phoneNumber}
 
-            </Dialog>
-          </IconButton>
-        </div>
+                </Dialog>
+              </IconButton>
+            </div>
+            <div>
+              <Link to={`/${this.props.city}/${this.props.brewery.brewery.name}`}>
+                  <img className={styles.cover} src={this.squareImage} />
+              </Link>
+              <div className={styles.info}>
+                <h3 className={styles.title}>{this.props.brewery.brewery.name}</h3>
+              </div>
+            </div>
 
-        <Link to={`/${this.props.city}/${this.props.brewery.brewery.name}`}>
-            <img className={styles.cover} src={this.squareImage} />
-        </Link>
-        <div className={styles.info}>
-          <h3 className={styles.title}>{this.props.brewery.brewery.name}</h3>
         </div>
-      </div>
+    </Fade>
+
+        </ReactCSSTransitionGroup>
+      </LazyLoad>
+    </div>
     );
   }
 }
