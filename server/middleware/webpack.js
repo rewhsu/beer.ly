@@ -6,6 +6,7 @@ const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackConfig = require('../../webpack.config.js');
 const config = require('../config/config');
+const CONTENT_TYPE_HTML = 'text/html';
 
 const isDeveloping = config.env !== config.prod;
 
@@ -33,6 +34,13 @@ module.exports = (app, express) => {
         modules: false
       }
     });
+
+    // app.use(function* rewriteIndex(next) {
+    //   if (this.accepts().toString().substr(0, CONTENT_TYPE_HTML.length) === CONTENT_TYPE_HTML) {
+    //     this.request.url = '/index.html';
+    //   }
+    //   yield *next;
+    // });
 
     app.use(middleware);
     app.use(webpackHotMiddleware(compiler));

@@ -34,7 +34,21 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        "presets": ["react", "es2015", "stage-0", "react-hmre"]
+        "presets": ["react", "es2015", "stage-0", "react-hmre"],
+          plugins: [
+             ['react-transform', {
+               transforms: [
+                 {
+                   transform: 'react-transform-hmr',
+                   imports: ['react'],
+                   locals: ['module'],
+                 }, {
+                   transform: 'react-transform-catch-errors',
+                   imports: ['react', 'redbox-react'],
+                 },
+               ],
+             }]
+            ]
       }
     }, {
       test: /\.json?$/,
@@ -46,5 +60,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
+    alias: {
+      'react-lazy-load': path.join(__dirname, 'node_modules/react-lazy-load/dist/LazyLoad.min.js'),
+        }
   }
 };
