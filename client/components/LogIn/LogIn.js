@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { browserHistory, Link } from 'react-router';
 
 class LogIn extends React.Component {
   constructor(props) {
@@ -23,6 +24,10 @@ class LogIn extends React.Component {
         // Clear input fields
         this.setState({username: '', password: ''});
         console.log(response.data.message);
+        console.log('!!!!', response);
+        if (response.data.success) {
+          browserHistory.push('/');
+        }
       })
       .catch((error) => {
         console.log(error);
