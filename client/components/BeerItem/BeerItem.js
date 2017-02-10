@@ -130,6 +130,24 @@ class BeerItem extends React.Component {
         (<p className={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed...</p>);
     };
 
+    const ratingHandler = () => {
+      console.log(this.props.beer.rating_score);
+      var ratingFloor = Math.floor(this.props.beer.rating_score);
+      var starArr = [];
+      for (var i = 0; i < 5; i++) {
+        if (i < ratingFloor) {
+          starArr.push(<span>★</span>);
+        } else {
+          starArr.push(<span>☆</span>);
+        }
+      }
+      return (
+        <div class="rating">
+          {starArr}
+        </div>
+      );
+    };
+
     return (
       <LazyLoad className={styles.cell} offset={150}>
       <Fade duration={.5}>
@@ -163,7 +181,7 @@ class BeerItem extends React.Component {
         </div>
         <img src={mockImages[this.imageHandler()]} className={styles.image} />
         { /* Optional information handlers */ }
-        { abvHandler() } { descriptionHandler() }
+        { abvHandler() } { descriptionHandler() }{ ratingHandler() }
         <button className={styles.addButton} onClick={handleClick} >Add to Flight</button>
 
       </div>
