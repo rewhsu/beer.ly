@@ -41,6 +41,7 @@ class Register extends React.Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <form className={styles.position} onSubmit={this.handleSubmit} method="POST">
         <h3> Register </h3>
         <label>
@@ -61,6 +62,34 @@ class Register extends React.Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
+=======
+      <div>
+        <br />
+        <br />
+        <br />
+        <br />      
+        <form onSubmit={this.handleSubmit} method="POST">
+          <h3> Register </h3>
+          <label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username..."
+              value={this.state.username}
+              onChange={this.handleUsernameChange}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password..."
+              value={this.state.password}
+              onChange={this.handlePasswordChange}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+>>>>>>> c00a570e55b2ba2865dfb7b30e3e7ed84fed740a
     );
   }
 }
