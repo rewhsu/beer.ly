@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Register.css'
 import axios from 'axios';
 
 class Register extends React.Component {
@@ -40,7 +41,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} method="POST">
+      <form className={styles.position} onSubmit={this.handleSubmit} method="POST">
         <h3> Register </h3>
         <label>
           <input
