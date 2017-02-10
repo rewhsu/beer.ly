@@ -31,7 +31,7 @@ class Cart extends React.Component {
 
     return (
       <div onClick={this.handleToggle}>
-        <Badge badgeContent={this.props.cart.length} secondary={true} badgeStyle={{top: 12, right: 12}}>
+        <Badge badgeContent={this.props.cart.length} secondary={true} badgeStyle={{top: 8, right: 8}}>
           <IconButton tooltip="Cart">
             <ShoppingCartIcon style={iconStyles} />
           </IconButton>
@@ -39,7 +39,7 @@ class Cart extends React.Component {
         <Drawer
           docked={false}
           openSecondary={true}
-          width={500}
+          width={200}
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
         >

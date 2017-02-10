@@ -5,6 +5,10 @@ import IconButton from 'material-ui/IconButton';
 import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import { default as Fade } from 'react-fade';
+import LazyLoad from 'react-lazy-load';
+
+import BeerInfo from './BengaliBeerData_691381.json';
 
 const mockImages = [
   'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer1.png',
@@ -19,6 +23,8 @@ const mockImages = [
   'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer10.png'
 ];
 
+
+
 const iconStyles = {
   position: 'fixed',
   top: 0,
@@ -29,7 +35,7 @@ class BeerItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      info: null,
+      info: BeerInfo,
       open: false
     };
     this.fetchBeerInfo = this.fetchBeerInfo.bind(this);
@@ -39,20 +45,19 @@ class BeerItem extends React.Component {
   fetchBeerInfo() {
     const context = this;
     const bid = this.props.beer.bid;
-    axios.get('/api/beerInfo/' + bid)
-      .then((response) => {
-        context.handleSuccess(response.data);
-      })
-      .catch((error) => {
-        context.handleError(error);
-      });
+    // axios.get('/api/beerInfo/' + bid)
+    //   .then((response) => {
+    //     context.handleSuccess(response.data);
+    //   })
+    //   .catch((error) => {
+    //     context.handleError(error);
+    //   });
   }
 
   handleSuccess(info) {
     this.setState({
       info: info.response.beer
     });
-    console.log(this.state.info);
   }
 
   handleError(error) {
@@ -147,8 +152,9 @@ class BeerItem extends React.Component {
     };
 
     return (
-      <div className={styles.cell}>
-
+      <LazyLoad className={styles.cell} offset={150}>
+      <Fade duration={.5}>
+      <div>
         <div>
           <IconButton onTouchTap={this.handleOpen}>
             <ActionInfoOutline style={iconStyles} />
@@ -182,6 +188,8 @@ class BeerItem extends React.Component {
         <button className={styles.addButton} onClick={handleClick} >Add to Flight</button>
 
       </div>
+        </Fade>
+      </LazyLoad>
     );
   }
 
