@@ -5,6 +5,8 @@ import IconButton from 'material-ui/IconButton';
 import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import { default as Fade } from 'react-fade';
+import LazyLoad from 'react-lazy-load';
 
 const mockImages = [
   'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer1.png',
@@ -129,8 +131,9 @@ class BeerItem extends React.Component {
     };
 
     return (
-      <div className={styles.cell}>
-
+      <LazyLoad className={styles.cell} offset={150}>
+      <Fade duration={.5}>
+      <div>
         <div>
           <IconButton onTouchTap={this.handleOpen}>
             <ActionInfoOutline style={iconStyles} />
@@ -164,6 +167,8 @@ class BeerItem extends React.Component {
         <button className={styles.addButton} onClick={handleClick} >Add to Flight</button>
 
       </div>
+        </Fade>
+      </LazyLoad>
     );
   }
 
