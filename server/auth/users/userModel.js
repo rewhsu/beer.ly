@@ -1,7 +1,6 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const passportLocalMongoose = require('passport-local-mongoose')
 mongoose.Promise = require('bluebird');
 const bcrypt = require('bcrypt');
 
@@ -16,7 +15,6 @@ const UserSchema = mongoose.Schema({
     require: true
   }
 });
-
 
 // Hash the user's password before inserting a new user
 UserSchema.pre('save', function(next) {
