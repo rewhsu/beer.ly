@@ -11,5 +11,3 @@ render(
   <Router routes={routes} history={browserHistory}/>,
   document.getElementById('root')
 );
-
-

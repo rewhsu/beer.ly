@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import Cart from '../Cart/Cart';
 import styles from './NavBar.css';
 
-
 class Nav extends React.Component {
   constructor(props) {
     super(props);
@@ -16,17 +15,17 @@ class Nav extends React.Component {
     const navbar = isHomePage ? styles.transparentNavbar : styles.navbar;
 
     return (
-       <nav className={navbar}>
+        <nav className={navbar}>
           <h1>
             <Link to="/" className={logo}>Beer.ly</Link>
           </h1>
-          <ul>            
+          <ul>
             <li>
               {cart}
             </li>
           </ul>
-      </nav>
-    )
+        </nav>
+    );
   }
 }
 
@@ -35,8 +34,4 @@ Nav.propTypes = {
   cart: PropTypes.array
 };
 
- 
 export default Nav;
-
-
-
