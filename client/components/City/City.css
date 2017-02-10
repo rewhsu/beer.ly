@@ -12,7 +12,8 @@
 }
 
 .details {
-  line-height: 0;
+  font-size: 1em;
+  width: 300px;
 }
 
 .filterBrewery {

@@ -24,7 +24,13 @@ class BreweryList extends React.Component {
 
     const breweryInfo = this.props.brewery.brewery;
 
-    this.squareImage = (breweryInfo.images) ? breweryInfo.images.squareMedium : '';
+    // Barebottle Brewing Company images have been deleted
+    if (breweryInfo.id === 'AQhqDf') {
+      this.squareImage = 'http://www.bernalbernal.com/wp-content/uploads/3rdLogo.png'      
+    } else {
+      this.squareImage = (breweryInfo.images) ? breweryInfo.images.squareMedium : '';
+    }
+
     this.website = breweryInfo.website;
     this.description = breweryInfo.description;
     this.phoneNumber = this.props.brewery.phone || '(650) 269 - 2188'; // Default number

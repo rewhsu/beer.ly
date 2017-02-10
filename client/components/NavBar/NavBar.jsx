@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import Cart from '../Cart/Cart';
 import styles from './NavBar.css';
+import BeerCart from '../BeerCart/BeerCart'
 
 class Nav extends React.Component {
   constructor(props) {
@@ -19,7 +20,16 @@ class Nav extends React.Component {
           <h1>
             <Link to="/" className={logo}>Beer.ly</Link>
           </h1>
+          <div>
+          {this.props.cart.length > 0 ? 
+            <BeerCart beers={this.props.cart} 
+              removeFromCart={this.props.removeFromCart} 
+              inCheckout={this.props.inCheckout} 
+              checkout={this.props.checkout}
+              location={this.props.location.pathname} /> : null}
+          </div>
           <ul>
+
             <li>
               {cart}
             </li>

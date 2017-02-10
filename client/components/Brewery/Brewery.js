@@ -5,19 +5,20 @@ import BeerList from '../BeerList/BeerList';
 import BeerCart from '../BeerCart/BeerCart';
 import Checkout from '../Checkout/Checkout';
 import styles from './Brewery.css';
+import BeerData from './BeerListData_1149.json';
 
 
 class Beers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      beers: [],
+      beers: BeerData,
       searchInput: ''
     };
   }
 
   componentDidMount() {
-    this.fetchBeers();
+    // this.fetchBeers();
   }
 
   fetchBeers() {
@@ -67,15 +68,12 @@ class Beers extends React.Component {
         </div>
         <br></br>
         <div>
-          {this.props.cart.length > 0 ? <BeerCart beers={this.props.cart} removeFromCart={this.props.removeFromCart} inCheckout={this.props.inCheckout} checkout={this.props.checkout} /> : null}
-          {this.props.inCheckout ?
-            <Checkout />
-            : <BeerList 
+           <BeerList 
                 beers={this.state.beers} 
                 addToCart={this.props.addToCart} 
                 filter={this.state.searchInput}
               />
-          }
+          
         </div>
 
 

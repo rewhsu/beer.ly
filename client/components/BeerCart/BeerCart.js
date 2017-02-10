@@ -13,8 +13,8 @@ const BeerCart = (props) => {
   });
 
   const cartDetailsHandler = cartItems.length ?
-    <h4>Your Cart has {cartItems.length} / 4 selections</h4>
-    : <h4>Your Cart is Empty!</h4>;
+    <p>Your Cart has {cartItems.length} / 4 selections</p>
+    : <p>Your Cart is Empty!</p>;
 
   const button = props.inCheckout ?
     null
@@ -23,11 +23,12 @@ const BeerCart = (props) => {
   const checkout = props.beers.length === cartSize ? <div>{button}</div> : null;
 
   return (
-    <div className={styles.wrapper}>
+    <div>
       <div className={styles.details}>
         {cartDetailsHandler}
-        {checkout}
       </div>
+        <div>{checkout}</div>
+        
       <div className={styles.cartRow}>
       {cartItems}
 
