@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
+import BeerCart from '../BeerCart/BeerCart';
 import styles from './CartItem.css';
 
 const CartItem = (props) => {
-  const handleRemove = () => (props.removeFromCart(props.index));
+  const handleRemove = () => (this.props.removeFromCart(this.props.index));
 
   return (
     <div className={styles.container}>
@@ -11,7 +12,7 @@ const CartItem = (props) => {
     	</div>
       <div className={styles.title}>
       </div>
-      <img src={props.beer.image} className={styles.image} />
+      <img src={props.beer.image} className={styles.image}/>
     </div>
   );
 };
