@@ -3,6 +3,8 @@ import axios from 'axios';
 import BreweryList from '../BreweryList/BreweryList';
 import styles from './City.css';
 import SearchFilter from '../SearchFilter/SearchFilter';
+import ReactSpinner from 'react-spinjs'
+import Sorting from '../Sorting/Sorting';
 
 class City extends React.Component {
   constructor(props) {
@@ -10,7 +12,8 @@ class City extends React.Component {
     this.state = {
       city: this.props.params.city,
       breweries: [],
-      searchInput: ''
+      searchInput: '',
+      showSpinner: true
     };
   }
 
@@ -29,6 +32,7 @@ class City extends React.Component {
       .then((response) => {
         const newBreweries = this.handleSuccess(response);
         context.setState({ breweries: newBreweries });
+        context.setState({showSpinner: false});
       })
       .catch((error) => {
         this.handleError(error);
@@ -52,22 +56,24 @@ class City extends React.Component {
       <div className={styles.wrapper}>
         <div className={styles.heading}>
           <h1>Breweries in {this.state.city}</h1>
+          { this.state.showSpinner ? <ReactSpinner config={{top: "50%", left: "50%"}} /> : null }
+          
           <p className={styles.details}>About {this.state.breweries.length} results ({(1 / this.state.breweries.length).toFixed(5)} seconds) </p>
           
+          <div className={styles.sortingFiltering}>
+          <Sorting className={styles.sorting} breweries={this.state.breweries}/>
           <div className={styles.filterBrewery}>
-            <div className="right-inner-addon">
-                <i className="icon-search"></i>
-                <input type="search"
-                  className="form-control" 
-                  placeholder="Search"
-                  value={this.state.searchInput}
-                  onChange={this.handleChange}
-                />
-            </div>
+            <input type="search"
+              className="form-control" 
+              placeholder="Search"
+              value={this.state.searchInput}
+              onChange={this.handleChange}
+            />
           </div>
+          </div>
+          <br></br>
         </div>
-        <br></br>
-        <div>
+        <div className={styles.breweryList}>
           <BreweryList 
             breweries={this.state.breweries} 
             city={this.state.city}          

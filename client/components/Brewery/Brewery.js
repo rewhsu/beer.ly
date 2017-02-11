@@ -6,14 +6,16 @@ import BeerCart from '../BeerCart/BeerCart';
 import Checkout from '../Checkout/Checkout';
 import styles from './Brewery.css';
 import BeerData from './BeerListData_1149.json';
-
+import ReactSpinner from 'react-spinjs';
+import Sorting from '../Sorting/Sorting'
 
 class Beers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       beers: [],
-      searchInput: ''
+      searchInput: '',
+      showSpinner: true
     };
   }
 
@@ -25,7 +27,8 @@ class Beers extends React.Component {
     const context = this;
     axios.get('/api/beers/' + this.props.params.brewery)
       .then((response) => {
-        context.handleSuccess(response.data);
+        this.setState({beers: response.data});
+        context.setState({showSpinner: false});
       })
       .catch((error) => {
         context.handleError(error);
@@ -33,28 +36,32 @@ class Beers extends React.Component {
   }
 
   handleSuccess(beers) {
-    this.setState({
-      beers: beers
-    });
+  
   }
 
   handleError(error) {
     console.log(error);
   }
 
-  handleChange = (event) => {
+  handleChange(event) {
     this.setState({searchInput: event.target.value});
   }
+
+
 
 
   render() {
     return (
       <div className={styles.wrapper}>
+
         <div className={styles.title}>
           <h1>{this.props.params.brewery}</h1>
-          <p className={styles.details}><strong>{this.state.beers.length}</strong> beers to choose from!</p>
-        
+          { this.state.showSpinner ? <ReactSpinner config={{top: "50%", left: "50%"}} /> : null }
+          <p className={styles.details}><strong>{this.state.beers.length}</strong> beers to choose from!</p>   
+          
+
           <div className={styles.filterBeer}>
+            <Sorting className={styles.sorting} beers={this.state.beers}/>
             <div className="right-inner-addon">
                 <i className="icon-search"></i>
                 <input type="search"
@@ -65,7 +72,9 @@ class Beers extends React.Component {
                 />
             </div>
           </div>
+
         </div>
+        <br></br>
         <br></br>
         <div>
            <BeerList 

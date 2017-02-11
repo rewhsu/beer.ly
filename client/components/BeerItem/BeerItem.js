@@ -7,7 +7,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { default as Fade } from 'react-fade';
 import LazyLoad from 'react-lazy-load';
-
+// import BeerData from '../Brewery/BeerListData_1149.json';
 import BeerInfo from './BengaliBeerData_691381.json';
 
 const mockImages = [
@@ -152,7 +152,7 @@ class BeerItem extends React.Component {
     };
 
     return (
-      <LazyLoad className={styles.cell} offset={150}>
+      <LazyLoad className={styles.cell} offset={200}>
       <Fade duration={.5}>
       <div>
         <div>
