@@ -18,20 +18,21 @@ const BeerCart = (props) => {
 
   const button = props.inCheckout ?
     null
-    : <RaisedButton className={styles.button} primary onClick={props.checkout} label="Checkout" />;
+    : <button className={styles.button} primary onClick={props.checkout} label="Checkout">Checkout</button>;
 
   const checkout = props.beers.length === cartSize ? <div>{button}</div> : null;
 
+  const saveFlight = <button onClick={props.saveFlight}>saveFlight</button>
+
   return (
-    <div>
+    <div className={styles.movingUp}>
       <div className={styles.details}>
         {cartDetailsHandler}
       </div>
-        <div>{checkout}</div>
-        
       <div className={styles.cartRow}>
-      {cartItems}
-
+        {cartItems}
+        {saveFlight}
+        {checkout}
       </div>
     </div>
   );
@@ -44,4 +45,5 @@ BeerCart.propTypes = {
   removeFromCart: PropTypes.func,
 };
 
+// use later
 export default BeerCart;
