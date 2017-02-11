@@ -5,6 +5,8 @@ import IconButton from 'material-ui/IconButton';
 import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import { default as Fade } from 'react-fade';
+import LazyLoad from 'react-lazy-load';
 
 const iconStyles = {
   position: 'fixed',
@@ -22,7 +24,13 @@ class BreweryList extends React.Component {
 
     const breweryInfo = this.props.brewery.brewery;
 
-    this.squareImage = (breweryInfo.images) ? breweryInfo.images.squareMedium : '';
+    // Barebottle Brewing Company images have been deleted
+    if (breweryInfo.id === 'AQhqDf') {
+      this.squareImage = 'http://www.bernalbernal.com/wp-content/uploads/3rdLogo.png'      
+    } else {
+      this.squareImage = (breweryInfo.images) ? breweryInfo.images.squareMedium : '';
+    }
+
     this.website = breweryInfo.website;
     this.description = breweryInfo.description;
     this.phoneNumber = this.props.brewery.phone || '(650) 269 - 2188'; // Default number
@@ -54,36 +62,40 @@ class BreweryList extends React.Component {
     ];
 
     return (
-      <div className={styles.cell} >
-
+      <LazyLoad className={styles.cell} offset={150}>
+      <Fade duration={.5}>
         <div>
-          <IconButton onTouchTap={this.handleOpen}>
-            <ActionInfoOutline style={iconStyles} />
-            <Dialog
-              title={this.props.brewery.brewery.name}
-              actions={actions}
-              modal={true}
-              open={this.state.open}
-              autoScrollBodyContent={true}
-            >
-              <br />
-              <br />
-              {this.description}
-              <br />
-              <br />
-              Tel: {this.phoneNumber}
+            <div>
+              <IconButton onTouchTap={this.handleOpen}>
+                <ActionInfoOutline style={iconStyles} />
+                <Dialog
+                  title={this.props.brewery.brewery.name}
+                  actions={actions}
+                  modal={true}
+                  open={this.state.open}
+                  autoScrollBodyContent={true}
+                >
+                  <br />
+                  <br />
+                  {this.description}
+                  <br />
+                  <br />
+                  Tel: {this.phoneNumber}
 
-            </Dialog>
-          </IconButton>
-        </div>
-
-        <Link to={`/${this.props.city}/${this.props.brewery.brewery.name}`}>
-            <img className={styles.cover} src={this.squareImage} />
-        </Link>
-        <div className={styles.info}>
-          <h3 className={styles.title}>{this.props.brewery.brewery.name}</h3>
-        </div>
-      </div>
+                </Dialog>
+              </IconButton>
+            </div>
+            <div>
+              <Link to={`/${this.props.city}/${this.props.brewery.brewery.name}`}>
+                  <img className={styles.cover} src={this.squareImage} />
+              </Link>
+              <div className={styles.info}>
+                <h3 className={styles.title}>{this.props.brewery.brewery.name}</h3>
+              </div>
+            </div>
+          </div>
+        </Fade>
+      </LazyLoad>
     );
   }
 }

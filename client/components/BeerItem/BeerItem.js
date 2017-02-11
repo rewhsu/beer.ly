@@ -1,6 +1,14 @@
 import React, { PropTypes } from 'react';
 import styles from './BeerItem.css';
 import axios from 'axios';
+import IconButton from 'material-ui/IconButton';
+import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import { default as Fade } from 'react-fade';
+import LazyLoad from 'react-lazy-load';
+
+import BeerInfo from './BengaliBeerData_691381.json';
 
 const mockImages = [
   'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer1.png',
@@ -15,12 +23,20 @@ const mockImages = [
   'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer10.png'
 ];
 
+
+const iconStyles = {
+  position: 'fixed',
+  top: 0,
+  width: 50,
+};
+
 class BeerItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      info: null
-    }
+      info: BeerInfo,
+      open: false
+    };
     this.fetchBeerInfo = this.fetchBeerInfo.bind(this);
     this.imageHandler = this.imageHandler.bind(this);
   }
@@ -41,7 +57,6 @@ class BeerItem extends React.Component {
     this.setState({
       info: info.response.beer
     });
-    console.log(this.state.info);
   }
 
   handleError(error) {
@@ -73,6 +88,14 @@ class BeerItem extends React.Component {
     return imgIndex;
   }
 
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
+
   render() {  
     console.log('props', this.props);
     const handleClick = () => {
@@ -82,6 +105,14 @@ class BeerItem extends React.Component {
       };
       this.props.addToCart(beer);
     };
+
+    const actions = [
+      <FlatButton
+        label="Close"
+        primary={true}
+        onTouchTap={this.handleClose}
+      />
+    ];
 
     // Handles situation when brewery does not supply information
     const abvHandler = () => {
@@ -98,7 +129,7 @@ class BeerItem extends React.Component {
 
     const ratingHandler = () => {
       console.log(this.props.beer.rating_score);
-      var ratingFloor = Math.floor(this.props.beer.rating_score)
+      var ratingFloor = Math.floor(this.props.beer.rating_score);
       var starArr = [];
       for (var i = 0; i < 5; i++) {
         if (i < ratingFloor) {
@@ -108,28 +139,55 @@ class BeerItem extends React.Component {
         }
       }
       return (
-        <div class="rating">
+        <div className="rating">
           {starArr}
         </div>
-      )
-    }
+      );
+    };
 
     return (
-      <div className={styles.cell}>
+      <LazyLoad className={styles.cell} offset={150}>
+      <Fade duration={.5}>
+      <div>
+        <div>
+          <IconButton onTouchTap={this.handleOpen}>
+            <ActionInfoOutline style={iconStyles} />
+            <Dialog
+              title={this.props.beer.beer_name}
+              actions={actions}
+              modal={true}
+              open={this.state.open}
+              autoScrollBodyContent={true}
+            >
+              <br />
+              <br />
+              <img src={this.state.info.response.beer.beer_label_hd} className={styles.image} />
+              <p>Style: {this.props.beer.beer_style}</p>
+              <p>IBU: {this.props.beer.beer_ibu}</p>
+              <p>ABV: {this.props.beer.beer_abv}%</p>
+              <p>Average rating: {this.props.beer.rating_score}</p>
+
+              <p>{this.props.beer.beer_description}</p>
+
+            </Dialog>
+          </IconButton>
+        </div>
+
         <div onClick={this.fetchBeerInfo} className={styles.title}>
           {this.props.beer.beer_name}
         </div>
         <img src={mockImages[this.imageHandler()]} className={styles.image} />
         { /* Optional information handlers */ }
         { abvHandler() } { descriptionHandler() }{ ratingHandler() }
-        
         <button className={styles.addButton} onClick={handleClick} >Add to Flight</button>
 
       </div>
+        </Fade>
+      </LazyLoad>
     );
   }
 
-};
+}
 
 BeerItem.propTypes = {
   beer: PropTypes.object

@@ -53,26 +53,27 @@ class City extends React.Component {
         <div className={styles.heading}>
           <h1>Breweries in {this.state.city}</h1>
           <p className={styles.details}>About {this.state.breweries.length} results ({(1 / this.state.breweries.length).toFixed(5)} seconds) </p>
-        </div>
-
-        <div className={styles.filterBrewery}>
-          <form>
-            <input 
-              type='text'
-              placeholder='Type to filter..'
-              // binding the input value to state
-              value={this.state.searchInput}
-              onChange={this.handleChange}
-            /> 
-          </form>
-        </div>
           
+          <div className={styles.filterBrewery}>
+            <div className="right-inner-addon">
+                <i className="icon-search"></i>
+                <input type="search"
+                  className="form-control" 
+                  placeholder="Search"
+                  value={this.state.searchInput}
+                  onChange={this.handleChange}
+                />
+            </div>
+          </div>
+        </div>
+        <br></br>
+        <div>
           <BreweryList 
             breweries={this.state.breweries} 
             city={this.state.city}          
             filter={this.state.searchInput}
           />
-          
+        </div>
 
       </div>
     );

@@ -8,18 +8,18 @@
 
 .heading {
   /*line-height: 1em;*/
-  margin-bottom: 2.5em;
+  margin-bottom: 40px;
 }
 
 .details {
-  line-height: 0;
-}
-
-.filterSearch {
-	width: 50%;
-	font-color: black;
+  font-size: 1em;
+  width: 300px;
 }
 
 .filterBrewery {
-  
+  position: relative;
+  display: inline-block;
+  float: right;
+  width: 300px;
+  vertical-align: top;
 }

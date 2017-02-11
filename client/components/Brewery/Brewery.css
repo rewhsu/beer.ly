@@ -14,12 +14,13 @@
 .details {
   font-size: 1em;
   margin: 0;
+  width: 200px;
 }
 
 .filterBeer {
 	position: relative;
 	display: inline-block;
 	float: right;
-	width: 200px;
+	width: 300px;
 	vertical-align: top;
 }
