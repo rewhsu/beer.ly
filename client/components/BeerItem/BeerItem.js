@@ -8,7 +8,7 @@ import FlatButton from 'material-ui/FlatButton';
 import { default as Fade } from 'react-fade';
 import LazyLoad from 'react-lazy-load';
 
-import BeerInfo from './BengaliBeerData_691381.json';
+// import BeerInfo from './BengaliBeerData_691381.json';
 
 const mockImages = [
   'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer1.png',
@@ -34,7 +34,7 @@ class BeerItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      info: BeerInfo,
+      info: null,
       open: false
     };
     this.fetchBeerInfo = this.fetchBeerInfo.bind(this);
@@ -46,17 +46,27 @@ class BeerItem extends React.Component {
     const bid = this.props.beer.bid;
     axios.get('/api/beerInfo/' + bid)
       .then((response) => {
-        context.handleSuccess(response.data);
+        console.log(response.data)
+        context.setState({
+          info: response.data.response.beer
+        });
       })
       .catch((error) => {
         context.handleError(error);
       });
   }
 
-  handleSuccess(info) {
-    this.setState({
-      info: info.response.beer
-    });
+  // handleSuccess(info) {
+  //   this.setState({
+  //     info: info.response.beer
+  //   });
+  // }
+
+
+  pic() {
+    if (this.state.info) {
+      return this.state.info.beer_label_hd
+    }
   }
 
   handleError(error) {
@@ -156,7 +166,7 @@ class BeerItem extends React.Component {
       <Fade duration={.5}>
       <div>
         <div>
-          <IconButton onTouchTap={this.handleOpen}>
+          <IconButton onTouchTap={this.handleOpen} onClick={this.fetchBeerInfo}>
             <ActionInfoOutline style={iconStyles} />
             <Dialog
               title={this.props.beer.beer_name}
@@ -167,14 +177,21 @@ class BeerItem extends React.Component {
             >
               <br />
               <br />
-              <img src={this.state.info.response.beer.beer_label_hd} className={styles.image} />
-              <p>Style: {this.props.beer.beer_style}</p>
-              <p>IBU: {this.props.beer.beer_ibu}</p>
-              <p>ABV: {this.props.beer.beer_abv}%</p>
-              <p>Average rating: {this.props.beer.rating_score}</p>
-
-              <p>{this.props.beer.beer_description}</p>
-
+              <div>
+                <img src={this.pic()} className={styles.label} />
+                <div className={styles.label}>
+                  <p>Style: {this.props.beer.beer_style}</p>
+                  <br />
+                  <p>IBU: {this.props.beer.beer_ibu}</p>
+                  <br />
+                  <p>ABV: {this.props.beer.beer_abv}%</p>
+                  <br />
+                  <p>Average rating: {this.props.beer.rating_score}</p>
+                  <br />
+                </div>
+                <br />
+                <div className={styles.label}>{this.props.beer.beer_description}</div>
+              </div>
             </Dialog>
           </IconButton>
         </div>
