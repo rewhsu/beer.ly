@@ -66,29 +66,30 @@ class BeerItem extends React.Component {
   imageHandler() {
     var style = this.props.beer.beer_style.toUpperCase();
     console.log(style);
-    var imgIndex = 3;
-    if (style.search('PILSNER') !== -1 || style.search('BLONDE') !== -1) {
-      imgIndex = 1;
-    }
-    if (style.search('RED') !== -1 || style.search('ALE') !== -1) {
-      imgIndex = 3;
-      console.log('RED/ALE');
-    }
-    if (style.search('DARK') !== -1 || style.search('STOUT') !== -1 || style.search('PORTER') !== -1 || style.search('BLACK')) {
-      imgIndex = 4;
-      console.log('DARK');
-    }
-    if (style.search('IPA') !== -1) {
-      imgIndex = 5;
-      console.log('IPA');
-    }
-    if (style.search('SAISON') !== -1) {
+    var imgIndex = 9;
+    if (style.search('LAGER') !== -1 || style.search('WIT') !== -1 || style.search('BLONDE') !== -1) {
+      imgIndex = 6;
+    } else if (style.search('SAISON') !== -1 || style.search('WHEAT') !== -1 || style.search('SESSION') !== -1) {
       imgIndex = 8;
       console.log('SAISON');
-    }
-    if (style.search('SOUR') !== -1 || style.search('GOSE') !== -1) {
+    } else if (style.search('DARK') !== -1) {
+      imgIndex = 7;
+      console.log('DARK');
+    } else if (style.search('STOUT') !== -1 || style.search('PORTER') !== -1 || style.search('BLACK') !== -1) {
+      imgIndex = 4;
+      console.log('STOUT');
+    } else if (style.search('PILSNER') !== -1) {
+      imgIndex = 1;
+      console.log('PILSNER');
+    } else if (style.search('RED') !== -1) {
+      imgIndex = 3;
+      console.log('RED');
+    } else if (style.search('SOUR') !== -1 || style.search('GOSE') !== -1) {
       imgIndex = 1;
       console.log('SOUR/GOSE');
+    } else if (style.search('IPA') !== -1 || style.search('PALE') !== -1) {
+      imgIndex = 5;
+      console.log('IPA');
     }
     return imgIndex;
   }

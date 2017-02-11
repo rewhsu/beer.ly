@@ -82,7 +82,6 @@ var logIn = function(req, res) {
           res.json({
             success: true,
             message: 'Authentication successful',
-            token
           });
         } else {
           res.json({
