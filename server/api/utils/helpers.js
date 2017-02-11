@@ -38,6 +38,14 @@ const createUntappdUrl = (api, queryOptions) => {
   return api.url + api.endPoint + clientId + clientSecret + '&' + queryStrings.join('&');
 }
 
+const createUntappdUrlAuth = (api) => {
+  const clientId = '?client_id=' + api.client_id;
+  // const clientSecret = '&client_secret=' + api.client_secret;
+  var url = api.url + api.method + '?access_token=' + api.token;
+  console.log('createUntappdUrlAuth', url);
+  return url;
+}
+
 exports.fetch = (api, queryOptions) => {
   const url = createUrl(api, queryOptions);
   return axios.get(url)
@@ -59,3 +67,16 @@ exports.fetchUntappd = (api, queryOptions) => {
       return error;
     });
 }
+
+exports.fetchUntappdAuth = (api) => {
+  const url = createUntappdUrlAuth(api);
+  return axios.get(url)
+    .then((response) => {
+      console.log('fetchUntappdAuth', response.data);
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
