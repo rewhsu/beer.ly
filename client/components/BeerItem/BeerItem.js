@@ -67,9 +67,9 @@ class BeerItem extends React.Component {
     var style = this.props.beer.beer_style.toUpperCase();
     console.log(style);
     var imgIndex = 9;
-    if (style.search('LAGER') !== -1 || style.search('BLONDE') !== -1) {
+    if (style.search('LAGER') !== -1 || style.search('WIT') !== -1 || style.search('BLONDE') !== -1) {
       imgIndex = 6;
-    } else if (style.search('SAISON') !== -1 || style.search('SESSION') !== -1) {
+    } else if (style.search('SAISON') !== -1 || style.search('WHEAT') !== -1 || style.search('SESSION') !== -1) {
       imgIndex = 8;
       console.log('SAISON');
     } else if (style.search('DARK') !== -1) {
@@ -87,7 +87,7 @@ class BeerItem extends React.Component {
     } else if (style.search('SOUR') !== -1 || style.search('GOSE') !== -1) {
       imgIndex = 1;
       console.log('SOUR/GOSE');
-    } else if (style.search('IPA') !== -1) {
+    } else if (style.search('IPA') !== -1 || style.search('PALE') !== -1) {
       imgIndex = 5;
       console.log('IPA');
     }
