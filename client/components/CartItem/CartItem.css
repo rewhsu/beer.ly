@@ -1,7 +1,5 @@
 .container {
   display: block;
-  margin-left: 100px;
-  margin-right: 25px;
   transition: background-color 0.3s ease;
   float: left;
   border: 1px solid grey;

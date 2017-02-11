@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 80px;
+  height: 100px;
   top: 0;
   padding: 20px 75px;
   position: fixed;
@@ -37,4 +37,8 @@
 
 .link {
 
+}
+
+.testing {
+  float: left;
 }

@@ -20,16 +20,16 @@ class Nav extends React.Component {
           <h1>
             <Link to="/" className={logo}>Beer.ly</Link>
           </h1>
-          <div>
+          <div className={styles.testing}>
           {this.props.cart.length > 0 ? 
-            <BeerCart beers={this.props.cart} 
+            <BeerCart 
+              beers={this.props.cart} 
               removeFromCart={this.props.removeFromCart} 
               inCheckout={this.props.inCheckout} 
               checkout={this.props.checkout}
               location={this.props.location.pathname} /> : null}
           </div>
           <ul>
-
             <li>
               {cart}
             </li>
