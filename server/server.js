@@ -8,6 +8,8 @@ const ssl = require('./middleware/ssl.js');
 const config = require('./config/config');
 const api = require('./api/api');
 const auth = require('./auth/auth');
+const oauth2 = require('./api/oAuth/oAuthRoutes');
+var session = require('express-session')
 
 // Connect to database
 mongoose.connect(config.database.local);
@@ -20,6 +22,8 @@ app.use('/api', api);
 
 // Authentication
 app.use('/auth', auth);
+
+app.use('/oauth2', oauth2);
 
 require('./middleware/webpack')(app, express);
 

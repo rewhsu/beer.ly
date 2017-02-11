@@ -2,15 +2,17 @@
 
 const utils = require('../utils/helpers');
 const config = require('../../config/apiKeys.js');
+const oauth = require('../oauth/oAuthController.js');
 
 function fetchBreweryByName(name) {
   const api = {
     client_id: config.untappdKey,
-    client_secret: config.untappdSecret,
+    // client_secret: config.untappdSecret,
     // url: 'http://api.brewerydb.com/v2/',
     // endPoint: 'breweries/'
     url: 'https://api.untappd.com/v4/',
-    endPoint: 'search/brewery'
+    token: process.env.ACCESS_TOKEN,
+    method: 'search/brewery/'
   };
 
   const queryOptions = {
@@ -18,7 +20,7 @@ function fetchBreweryByName(name) {
     // name: name
   };
 
-  return utils.fetchUntappd(api, queryOptions);
+  return utils.fetchUntappdAuth(api, queryOptions);
 }
 
 function fetchBeersByBreweryId(breweryID) {
@@ -27,15 +29,17 @@ function fetchBeersByBreweryId(breweryID) {
     // url: 'http://api.brewerydb.com/v2/',
     // endPoint: `brewery/${breweryID}/beers/`
     client_id: config.untappdKey,
-    client_secret: config.untappdSecret,
+    // client_secret: config.untappdSecret,
     url: 'https://api.untappd.com/v4/',
-    endPoint: `brewery/info/${breweryID}`
+    token: process.env.ACCESS_TOKEN,
+    method: `brewery/info/${breweryID}`
   };
 
-  return utils.fetchUntappd(api, {});
+  return utils.fetchUntappdAuth(api, {});
 }
 
 exports.get = (req, res) => {
+  // console.log('*****', req.params)
   const name = req.params.brewery;
 
   fetchBreweryByName(name)

@@ -12,13 +12,13 @@ class Beers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      beers: BeerData,
+      beers: [],
       searchInput: ''
     };
   }
 
   componentDidMount() {
-    // this.fetchBeers();
+    this.fetchBeers();
   }
 
   fetchBeers() {
