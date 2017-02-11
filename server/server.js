@@ -8,7 +8,7 @@ const ssl = require('./middleware/ssl.js');
 const config = require('./config/config');
 const api = require('./api/api');
 const auth = require('./auth/auth');
-const oauth2 = require('./api/auth/authRoutes');
+const oauth2 = require('./api/oAuth/oAuthRoutes');
 var session = require('express-session')
 
 // Connect to database
@@ -16,13 +16,6 @@ mongoose.connect(config.database.local);
 
 // Middleware
 require('./middleware/middleware')(app);
-
-// app.use(session({
-//   secret: 'keyboard cat',
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: { secure: true }
-// }))
 
 // API Routing
 app.use('/api', api);

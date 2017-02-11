@@ -2,19 +2,26 @@
 
 const utils = require('../utils/helpers');
 const config = require('../../config/apiKeys.js');
+const oauth = require('../oauth/oAuthController.js');
 
 function fetchBeerInfoByBreweryId(beerID) {
+  if (!oauth.hasToken()) {
+    oauth.tokenSequence();
+  };
   const api = {
     // key: config.breweryDBKey,
     // url: 'http://api.brewerydb.com/v2/',
     // endPoint: `brewery/${breweryID}/beers/`
     client_id: config.untappdKey,
-    client_secret: config.untappdSecret,
+    // client_secret: config.untappdSecret,
     url: 'https://api.untappd.com/v4/',
-    endPoint: `beer/info/${beerID}`
+    token: process.env.ACCESS_TOKEN,
+    method: `beer/info/${beerID}`
   };
 
-  return utils.fetchUntappd(api, {});
+  // return utils.fetchUntappd(api, {});
+  return utils.fetchUntappdAuth(api, {});
+
 }
 
 exports.get = (req, res) => {
