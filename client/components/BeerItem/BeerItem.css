@@ -61,6 +61,11 @@
   height: 10px;
 }
 
+.rating:hover
+.rating:focus {
+  
+}
+
 /* Tablet (medium) screens */
 @media (min-width: 40em) {
   .cell {
