@@ -3,7 +3,7 @@ import BeerCart from '../BeerCart/BeerCart';
 import styles from './CartItem.css';
 
 const CartItem = (props) => {
-  const handleRemove = () => (this.props.removeFromCart(this.props.index));
+  const handleRemove = () => (props.removeFromCart(props.index));
 
   return (
     <div className={styles.container}>

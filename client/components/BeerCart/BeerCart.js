@@ -18,7 +18,6 @@ class BeerCart extends React.Component {
 
   render() {
   const cartItems = this.props.beers.map((beer, index) => {
-    debugger;
     return <CartItem 
                   key={index} 
                   beer={beer} 
@@ -40,8 +39,6 @@ class BeerCart extends React.Component {
 
   const saveFlight = <button onClick={this.props.saveFlight}>saveFlight</button>
   
-  const deleteFlight = <button onClick={this.props.removeCart.bind(this)}>remove</button> 
-
   return (
     <div className={styles.movingUp}>
       <div className={styles.details}>
@@ -50,7 +47,6 @@ class BeerCart extends React.Component {
       <div className={styles.cartRow}>
         {cartItems}
         {saveFlight}
-        {deleteFlight}
       </div>
     </div>
     );
