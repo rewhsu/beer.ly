@@ -22,30 +22,6 @@ var redirectUrl = 'https://localhost:8008/oauth2/callback';
 
 exports.Untappd = Untappd;
 
-exports.tokenSequence = function() {
-  return axios.get(exports.redirectToAuth)
-  .then(function() {
-    exports.getToken();
-    console.log('TOKEN SEQUENCE', Untappd.getAccessToken());
-    return;
-  })
-  .then(function(response) {
-     return Untappd.getAccessToken();
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
-}
-
-// exports.hasToken = function() {
-//   if (Untappd.getAccessToken() === undefined) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// }
-
-
 exports.redirectToAuth = function(req, res) {
   res.redirect(Untappd.getAuthenticationURL(redirectUrl));
 }
@@ -62,14 +38,8 @@ exports.getToken = function(req, res) {
   .then(function(token) {
     process.env.ACCESS_TOKEN = token;
     console.log('ACCESS_TOKEN', process.env.ACCESS_TOKEN);
-    // if(Untappd.getAccessToken() !== undefined) {
-    //   message = 'Access token received';
-    // } else {
-    //   message = 'Access token failed';
-    // }
-    // res.send(message);
-    // res.redirect('https://localhost:8008');
-    res.send(token);
+    // res.send(token);
+    res.redirect('https://localhost:8008');
   })
 }
 

@@ -5,9 +5,6 @@ const config = require('../../config/apiKeys.js');
 const oauth = require('../oauth/oAuthController.js');
 
 function fetchBeerInfoByBreweryId(beerID) {
-  if (!oauth.hasToken()) {
-    oauth.tokenSequence();
-  };
   const api = {
     // key: config.breweryDBKey,
     // url: 'http://api.brewerydb.com/v2/',

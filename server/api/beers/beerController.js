@@ -39,12 +39,11 @@ function fetchBeersByBreweryId(breweryID) {
 }
 
 exports.get = (req, res) => {
-  console.log('*****', req.params)
+  // console.log('*****', req.params)
   const name = req.params.brewery;
 
   fetchBreweryByName(name)
     .then((response) => {
-      console.log(response);
       const breweryID = response.response.brewery.items[0].brewery.brewery_id;
       return fetchBeersByBreweryId(breweryID);
     })
