@@ -24,11 +24,10 @@ const mockImages = [
 ];
 
 
-
 const iconStyles = {
   position: 'fixed',
   top: 0,
-  width: 100,
+  width: 50,
 };
 
 class BeerItem extends React.Component {
@@ -45,13 +44,13 @@ class BeerItem extends React.Component {
   fetchBeerInfo() {
     const context = this;
     const bid = this.props.beer.bid;
-    // axios.get('/api/beerInfo/' + bid)
-    //   .then((response) => {
-    //     context.handleSuccess(response.data);
-    //   })
-    //   .catch((error) => {
-    //     context.handleError(error);
-    //   });
+    axios.get('/api/beerInfo/' + bid)
+      .then((response) => {
+        context.handleSuccess(response.data);
+      })
+      .catch((error) => {
+        context.handleError(error);
+      });
   }
 
   handleSuccess(info) {
@@ -145,7 +144,7 @@ class BeerItem extends React.Component {
         }
       }
       return (
-        <div class="rating">
+        <div className="rating">
           {starArr}
         </div>
       );
@@ -167,7 +166,7 @@ class BeerItem extends React.Component {
             >
               <br />
               <br />
-              <img src={this.props.beer.beer_label} className={styles.image} />
+              <img src={this.state.info.response.beer.beer_label_hd} className={styles.image} />
               <p>Style: {this.props.beer.beer_style}</p>
               <p>IBU: {this.props.beer.beer_ibu}</p>
               <p>ABV: {this.props.beer.beer_abv}%</p>
