@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { browserHistory, Link } from 'react-router';
+import { browserHistory } from 'react-router';
 
 class LogIn extends React.Component {
   constructor(props) {
