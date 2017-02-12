@@ -10,16 +10,26 @@ class BeerCart extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      savingCart: [],
+      currectCart: this.props.beers
+    }
   }
 
-  saveFlight() {
-    alert('hellokevin')
-  }
+  saveFlight() { 
+    var savedCart = this.state.savingCart.push(this.props.currectCart)
+    console.log('the func', savedCart)
+    console.log('the savingcart', this.state.savingcart)
+    this.setState({
+       savingCart: savedCart,
+       currectCart: null
+    })
+  } 
 
   render() {
   const cartItems = this.props.beers.map((beer, index) => {
     return <CartItem 
-                  key={index} 
+                  key={index}  
                   beer={beer} 
                   index={index}
                   removeFromCart={this.props.removeCart.bind(this)} 
@@ -61,4 +71,7 @@ BeerCart.propTypes = {
 };
 
 // use later
+
+
+
 export default BeerCart;

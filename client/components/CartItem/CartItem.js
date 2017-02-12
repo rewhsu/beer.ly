@@ -16,19 +16,18 @@ class CartItem extends React.Component {
   }
 
   render() {
-  
-  return (
-      <div className={styles.container}>
-        <div onClick={this.handleRemove.bind(this)}>
-          <img className={styles.xButtonImage} src="https://s3-us-west-1.amazonaws.com/beer.ly/beers/grey-x.svg" />
-        </div>
-        <IconButton className={styles.iconButton} tooltip={this.props.beer.name}>
-          <img src={this.props.beer.image} className={styles.image}/>
-        </IconButton>
-      </div>
-    );
-  };
-}
+      return (
+          <div className={styles.container}>
+            <div onClick={this.handleRemove.bind(this)}>
+              <img className={styles.xButtonImage} src="https://s3-us-west-1.amazonaws.com/beer.ly/beers/grey-x.svg" />
+            </div>
+            <IconButton className={styles.iconButton} tooltip={this.props.beer.name}>
+              <img src={this.props.beer.image} className={styles.image}/>
+            </IconButton>
+          </div>
+        );
+      };
+    }
 
 CartItem.propTypes = {
   beer: PropTypes.object
