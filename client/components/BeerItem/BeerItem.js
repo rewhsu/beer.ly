@@ -177,21 +177,17 @@ class BeerItem extends React.Component {
             >
               <br />
               <br />
-              <div>
+              <div className={styles.label} >
                 <img src={this.pic()} className={styles.label} />
-                <div className={styles.label}>
-                  <p>Style: {this.props.beer.beer_style}</p>
-                  <br />
-                  <p>IBU: {this.props.beer.beer_ibu}</p>
-                  <br />
-                  <p>ABV: {this.props.beer.beer_abv}%</p>
-                  <br />
-                  <p>Average rating: {this.props.beer.rating_score}</p>
-                  <br />
+                <div className={styles.type}>
+                  <div>Style: {this.props.beer.beer_style}</div>
+                  <div>IBU: {this.props.beer.beer_ibu}</div>
+                  <div>ABV: {this.props.beer.beer_abv}%</div>
+                  <div>Average rating: {this.props.beer.rating_score}%</div>
                 </div>
                 <br />
-                <div className={styles.label}>{this.props.beer.beer_description}</div>
               </div>
+              <div>{this.props.beer.beer_description}</div>
             </Dialog>
           </IconButton>
         </div>
