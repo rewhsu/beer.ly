@@ -9,6 +9,7 @@ class Nav extends React.Component {
     super(props);
   }
 
+
   render() {
     const isHomePage = this.props.location.pathname === '/';
     const logo = isHomePage ? styles.lightLogo : styles.logo;
@@ -25,9 +26,9 @@ class Nav extends React.Component {
           </h3>
           <div className={styles.testing}>
           {this.props.cart.length > 0 ? 
-            <BeerCart 
+            <BeerCart
               beers={this.props.cart} 
-              removeFromCart={this.props.removeFromCart} 
+              removeCart={this.props.removeFromCart.bind(this)} 
               inCheckout={this.props.inCheckout} 
               checkout={this.props.checkout}
               location={this.props.location.pathname} /> : null}

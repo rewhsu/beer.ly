@@ -1,21 +1,33 @@
 import React, { PropTypes } from 'react';
+import BeerCart from '../BeerCart/BeerCart';
 import styles from './CartItem.css';
+import Badge from 'material-ui/Badge';
+import IconButton from 'material-ui/IconButton';
+import UploadIcon from 'material-ui/svg-icons/file/cloud-upload';
+import FolderIcon from 'material-ui/svg-icons/file/folder-open';
 
-const CartItem = (props) => {
-  const handleRemove = () => (props.removeFromCart(props.index));
+class CartItem extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
+  handleRemove() {
+    this.props.removeFromCart(this.props.index)
+  }
 
-  return (
-    <div className={styles.container}>
-    	<div onClick={handleRemove}>
-    		<img className={styles.xButtonImage} src="https://s3-us-west-1.amazonaws.com/beer.ly/beers/grey-x.svg" />
-    	</div>
-      <div className={styles.title}>
-        {props.beer.name}
-      </div>
-      <img src={props.beer.image} className={styles.image} />
-    </div>
-  );
-};
+  render() {
+      return (
+          <div className={styles.container}>
+            <div onClick={this.handleRemove.bind(this)}>
+              <img className={styles.xButtonImage} src="https://s3-us-west-1.amazonaws.com/beer.ly/beers/grey-x.svg" />
+            </div>
+            <IconButton className={styles.iconButton} tooltip={this.props.beer.name}>
+              <img src={this.props.beer.image} className={styles.image}/>
+            </IconButton>
+          </div>
+        );
+      };
+    }
 
 CartItem.propTypes = {
   beer: PropTypes.object

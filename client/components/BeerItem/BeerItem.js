@@ -70,7 +70,6 @@ class BeerItem extends React.Component {
 
   imageHandler() {
     var style = this.props.beer.beer_style.toUpperCase();
-    console.log(style);
     var imgIndex = 9;
     if (style.search('LAGER') !== -1 || style.search('WIT') !== -1 || style.search('BLONDE') !== -1) {
       imgIndex = 6;
@@ -108,7 +107,6 @@ class BeerItem extends React.Component {
   };
 
   render() {  
-    console.log('props', this.props);
     const handleClick = () => {
       const beer = {
         name: this.props.beer.beer_name,
@@ -139,7 +137,6 @@ class BeerItem extends React.Component {
     };
 
     const ratingHandler = () => {
-      console.log(this.props.beer.rating_score);
       var ratingFloor = Math.floor(this.props.beer.rating_score);
       var starArr = [];
       for (var i = 0; i < 5; i++) {

@@ -31,9 +31,10 @@ class Cart extends React.Component {
 
   render() {
     const beersInCart = this.props.cart.map((beer, index) => {
+    console.log('i need image', this.props.cart)
       return <ListItem 
               primaryText={beer.name} 
-              leftAvatar={<Avatar src="images/ok-128.jpg" />}
+              leftAvatar={<Avatar src={beer.image}/>}
               key={index} 
               />;
     });
@@ -55,6 +56,7 @@ class Cart extends React.Component {
           <List>
             <Subheader>Recent chats</Subheader>
             {beersInCart}
+            <button>Checkout</button>
           </List>
         </Drawer>
       </div>
