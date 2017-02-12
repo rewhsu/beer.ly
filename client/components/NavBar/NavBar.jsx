@@ -10,8 +10,6 @@ class Nav extends React.Component {
   }
 
 
-
-
   render() {
     const isHomePage = this.props.location.pathname === '/';
     const logo = isHomePage ? styles.lightLogo : styles.logo;

@@ -12,7 +12,7 @@ class BeerCart extends React.Component {
 
   }
 
-  onHover() {
+  saveFlight() {
     alert('hellokevin')
   }
 
@@ -22,7 +22,6 @@ class BeerCart extends React.Component {
                   key={index} 
                   beer={beer} 
                   index={index}
-                  onClick={this.onHover.bind(this)}
                   removeFromCart={this.props.removeCart.bind(this)} 
                 />;
   });
@@ -37,7 +36,7 @@ class BeerCart extends React.Component {
 
   const checkout = this.props.beers.length === cartSize ? <div>{button}</div> : null;
 
-  const saveFlight = <button onClick={this.props.saveFlight}>saveFlight</button>
+  const saveFlight = <button onClick={this.saveFlight.bind(this)}>saveFlight</button>
   
   return (
     <div className={styles.movingUp}>
@@ -47,6 +46,7 @@ class BeerCart extends React.Component {
       <div className={styles.cartRow}>
         {cartItems}
         {saveFlight}
+        {checkout}
       </div>
     </div>
     );
