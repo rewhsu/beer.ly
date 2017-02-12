@@ -56,16 +56,11 @@ class BeerItem extends React.Component {
       });
   }
 
-  // handleSuccess(info) {
-  //   this.setState({
-  //     info: info.response.beer
-  //   });
-  // }
-
-
   pic() {
     if (this.state.info) {
-      return this.state.info.beer_label_hd
+      return this.state.info.beer_label_hd;
+    } else {
+      return 'http://i.giphy.com/vbW83rOm8JZYI.gif';
     }
   }
 
