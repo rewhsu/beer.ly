@@ -62,7 +62,7 @@ class BreweryList extends React.Component {
     ];
 
     return (
-      <LazyLoad className={styles.cell} offset={150}>
+      <LazyLoad className={styles.cell} offset={200}>
       <Fade duration={.5}>
         <div>
             <div>

@@ -10,7 +10,6 @@ import LazyLoad from 'react-lazy-load';
 import Reviews from './../Reviews/Reviews';
 import BeerSuggestions from './../BeerSuggestions/BeerSuggestions';
 
-// import BeerInfo from './BengaliBeerData_691381.json';
 
 const mockImages = [
   'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer1.png',
@@ -48,7 +47,6 @@ class BeerItem extends React.Component {
     const bid = this.props.beer.bid;
     axios.get('/api/beerInfo/' + bid)
       .then((response) => {
-        console.log(response.data)
         context.setState({
           info: response.data.response.beer
         });
@@ -89,25 +87,18 @@ class BeerItem extends React.Component {
       imgIndex = 6;
     } else if (style.search('SAISON') !== -1 || style.search('WHEAT') !== -1 || style.search('SESSION') !== -1) {
       imgIndex = 8;
-      console.log('SAISON');
     } else if (style.search('DARK') !== -1) {
       imgIndex = 7;
-      console.log('DARK');
     } else if (style.search('STOUT') !== -1 || style.search('PORTER') !== -1 || style.search('BLACK') !== -1) {
       imgIndex = 4;
-      console.log('STOUT');
     } else if (style.search('PILSNER') !== -1) {
       imgIndex = 1;
-      console.log('PILSNER');
     } else if (style.search('RED') !== -1) {
       imgIndex = 3;
-      console.log('RED');
     } else if (style.search('SOUR') !== -1 || style.search('GOSE') !== -1) {
       imgIndex = 1;
-      console.log('SOUR/GOSE');
     } else if (style.search('IPA') !== -1 || style.search('PALE') !== -1) {
       imgIndex = 5;
-      console.log('IPA');
     }
     return imgIndex;
   }
@@ -168,7 +159,7 @@ class BeerItem extends React.Component {
     };
 
     return (
-      <LazyLoad className={styles.cell} offset={150}>
+      <LazyLoad className={styles.cell} offset={200}>
       <Fade duration={.5}>
       <div>
         <div>
