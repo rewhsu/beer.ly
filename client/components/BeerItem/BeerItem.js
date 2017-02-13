@@ -189,7 +189,7 @@ class BeerItem extends React.Component {
                   <div>Style: {this.props.beer.beer_style}</div>
                   <div>IBU: {this.props.beer.beer_ibu}</div>
                   <div>ABV: {this.props.beer.beer_abv}%</div>
-                  <div>Average rating: {this.props.beer.rating_score}%</div>
+                  <div>Average rating: {this.props.beer.rating_score}</div>
                 </div>
                 <br />
               </div>
