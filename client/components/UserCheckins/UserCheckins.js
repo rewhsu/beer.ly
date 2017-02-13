@@ -1,22 +1,22 @@
 import React from 'react';
-import styles from './Reviews.css';
 import Review from './../Review/Review.js'
+import styles from './UserCheckins.css';
 
-class Reviews extends React.Component {
+class UserCheckins extends React.Component {
   constructor(props) {
     super(props)
   }
 
   render() {
-    console.log('REVIEWS PROPS', this.props);
+    console.log('UserCheckins PROPS', this.props);
     return (
       <div className={styles.grid}>
         <div className={styles.type}>
           <div className={styles.preScrollableFixed}>
-            <h1>User Reviews</h1>
+            <h3>User Checkins</h3>
             {console.log(this.props)}
             {this.props.checkins.items.map((checkin) =>
-              <Review checkin={checkin} />
+              <Review checkin={checkin} isProfile={true} />
             )}
           </div>
         </div>
@@ -25,8 +25,8 @@ class Reviews extends React.Component {
   }
 }
 
-Reviews.propTypes = {
+UserCheckins.propTypes = {
   checkins: React.PropTypes.object.isRequired,
 };
 
-export default Reviews;
+export default UserCheckins;
