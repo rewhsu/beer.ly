@@ -10,25 +10,6 @@ import UserProfile from '../UserProfile/UserProfile.js'
 
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-// var x = false;
-
-// function requireAuth(nextState, replace) {
-	
-// 	// console.log('window.location.assign.href', window.location.href);
-// 	console.log('nextState.location.pathname', nextState.location.pathname);
-
-// 	if (x) {
-// 		browserHistory.push(nextState.location.pathname);
-// 		return true;
-// 	} else {
-// 		window.location = 'https://untappd.com/oauth/authenticate/?client_id=E2C117BA34FA82AFB0FAB4CC38E9EF40993DF5E4&response_type=code&redirect_url=https://localhost:8008/oauth2/callback&code=COD';
-// 		x = true;
-// 		return false;
-
-// 	}
-
-// }
-
 module.exports = (
 	<Router history={browserHistory}>
 	  <Route path="/" component={App}>

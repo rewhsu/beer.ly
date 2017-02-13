@@ -28,7 +28,7 @@ class UserProfile extends React.Component {
       username = ''
     }
       
-    var url = `https://localhost:8008/api/user/${username}`;
+    var url = `https://localhost:5000/api/user/${username}`;
     axios.get(url)
       .then((response) => {
         context.handleSuccess(response.data)

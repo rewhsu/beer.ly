@@ -18,7 +18,7 @@ var debug = false;
 var Untappd = new UntappdClient(debug);
 Untappd.setClientId(clientId);
 Untappd.setClientSecret(clientSecret);
-var redirectUrl = 'https://localhost:8008/oauth2/callback';
+var redirectUrl = 'https://localhost:5000/oauth2/callback';
 
 exports.Untappd = Untappd;
 
@@ -39,6 +39,6 @@ exports.getToken = function(req, res) {
     process.env.ACCESS_TOKEN = token;
     console.log('ACCESS_TOKEN', process.env.ACCESS_TOKEN);
     // res.send(token);
-    res.redirect('https://localhost:8008');
+    res.redirect('https://localhost:5000');
   })
 }
