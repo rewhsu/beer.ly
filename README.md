@@ -53,7 +53,7 @@ Instructions on how to get set up with HTTPS
 ```
 npm start
 ```
-1. Go to 'https://localhost:8008' to reach the server. Use https from now on. If you're using Chrome, it's going to complain that it's insecure. Just hit the 'Advanced' button and click 'Continue anyway'. You only have to do this once.
+1. Go to 'https://localhost:5000' to reach the server. Use https from now on. If you're using Chrome, it's going to complain that it's insecure. Just hit the 'Advanced' button and click 'Continue anyway'. You only have to do this once.
 
 ### Webpack Development Middleware
 

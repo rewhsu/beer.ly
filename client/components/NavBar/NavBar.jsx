@@ -22,7 +22,7 @@ class Nav extends React.Component {
             <Link to="/" className={logo}>Beer.ly</Link>
           </h1>
           <h3>
-            <a className={styles.login} href='https://localhost:8008/oauth2/auth'>Login</a>
+            <a className={styles.login} href='https://localhost:5000/oauth2/auth'>Login</a>
           </h3>
           <h3>
             <Link className={styles.profile} to="/profile">Profile</Link>
