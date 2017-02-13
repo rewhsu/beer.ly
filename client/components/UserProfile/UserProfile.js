@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './UserProfile.css';
 import RecentBrews from './../RecentBrews/RecentBrews.js'
 import UserInfo from './../UserInfo/UserInfo.js'
+import UserCheckins from './../UserCheckins/UserCheckins.js'
+
 
 import axios from 'axios'
 
@@ -50,6 +52,7 @@ class UserProfile extends React.Component {
               <div className=''>
                 <UserInfo userInfo={this.state.userInfo} />
                 <RecentBrews recentBrews={this.state.recentBrews} />
+                <UserCheckins checkins={this.state.userInfo.checkins} />
               </div>
               :null}
             </div>
