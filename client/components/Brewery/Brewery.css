@@ -20,7 +20,7 @@
 .searchBar {
   float: left;
   display: inline-block;
-  width: 65%;
+  width: 50%;
 }
 
 .sorting {
