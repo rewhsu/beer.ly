@@ -1,0 +1,27 @@
+.detailWrapper {
+	display: inline-block;
+	float: right;
+	position: relative;
+	margin-left: 20px;
+	margin: 40px;
+	font-size: 16pt;
+}
+
+.userInfo {
+	position: relative;
+	display: block;
+	margin: auto;
+	width: 50%;
+}
+
+.userInfo h1 {
+	width: 100%;
+	text-align: center;
+}
+
+.userInfo img {
+	float: left;
+	width: 50%;
+	text-align: center;
+	margin: 20px auto;
+}

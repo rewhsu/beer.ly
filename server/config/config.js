@@ -1,7 +1,7 @@
 const config = {
   dev: 'development',
   prod: 'production',
-  port: process.env.PORT || 8008,
+  port: process.env.PORT || 5000,
   database: {
     local: 'mongodb://localhost/beerly',
     firebase: '' // if you want to use firebase

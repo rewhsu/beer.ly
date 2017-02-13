@@ -142,7 +142,7 @@ class BeerItem extends React.Component {
     };
 
     const ratingHandler = () => {
-      var ratingFloor = Math.floor(this.props.beer.rating_score);
+      var ratingFloor = Math.round(this.props.beer.rating_score);
       var starArr = [];
       for (var i = 0; i < 5; i++) {
         if (i < ratingFloor) {
@@ -171,6 +171,7 @@ class BeerItem extends React.Component {
               modal={true}
               open={this.state.open}
               autoScrollBodyContent={true}
+              contentStyle={{ width: '60%', maxWidth: 'none'}}
             >
             <br></br>
               <div className={styles.label} >

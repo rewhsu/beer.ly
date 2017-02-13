@@ -8,16 +8,14 @@ class RecentBrews extends React.Component {
   }
 
   render() {
-    console.log('RECENTBREWS PROPS', this.props);
     return (
       <div className={styles.grid}>
         <div className={styles.type}>
           <h3>Recent Brews</h3>
           <div className={styles.preScrollableFixed}>
-            {console.log(this.props)}
             <div className={styles.recentBrewsWidth}>
-              {this.props.recentBrews.items.map((brew) =>
-                <RecentBrew beer={brew} />
+              {this.props.recentBrews.items.map((brew, i) =>
+                <RecentBrew beer={brew} key={i}/>
               )}
             </div>
           </div>

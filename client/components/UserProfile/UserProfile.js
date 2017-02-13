@@ -56,12 +56,11 @@ class UserProfile extends React.Component {
         <div className={styles.type}>
           <div className={styles.container}>
             <div className='preScrollableFixed'>
-              <h1>User Profile</h1>
               {this.state.userInfo !== null ?
               <div className=''>
-                <UserInfo userInfo={this.state.userInfo} />
-                <RecentBrews recentBrews={this.state.recentBrews} />
-                <UserCheckins checkins={this.state.userInfo.checkins} />
+                <UserInfo className={styles.userInfo} userInfo={this.state.userInfo} />
+                <RecentBrews className={styles.brews} recentBrews={this.state.recentBrews} />
+                <UserCheckins className={styles.checkin} checkins={this.state.userInfo.checkins} />
               </div>
               :null}
             </div>

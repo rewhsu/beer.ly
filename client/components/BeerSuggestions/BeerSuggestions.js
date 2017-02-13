@@ -8,20 +8,18 @@ class BeerSuggestions extends React.Component {
   }
 
   render() {
-    console.log('SUGGESTIONS PROPS', this.props);
     return (
       <div className={styles.grid}>
         <div className={styles.type}>
-        <div className={styles.preScrollableFixed}>
-          <h1>Similar Beers</h1>
+          <h3>Similar Beers</h3>
             {console.log(this.props)}
             <div className={styles.suggestionWidth}>
               {this.props.suggestions.items.map((suggestion) =>
                 <BeerSuggestion suggestion={suggestion} />
               )}
-            </div>
           </div>
         </div>
+        <h4>User Reviews</h4>
       </div>
     );
   }
