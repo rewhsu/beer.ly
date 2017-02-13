@@ -12,10 +12,13 @@ class Reviews extends React.Component {
     return (
       <div className={styles.grid}>
         <div className={styles.type}>
-          {console.log(this.props)}
-          {this.props.checkins.items.map((checkin) =>
-            <Review checkin={checkin} />
-          )}
+          <div className={styles.preScrollableFixed}>
+            <h1>User Reviews</h1>
+            {console.log(this.props)}
+            {this.props.checkins.items.map((checkin) =>
+              <Review checkin={checkin} />
+            )}
+          </div>
         </div>
       </div>
     );

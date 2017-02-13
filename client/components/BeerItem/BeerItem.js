@@ -7,7 +7,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { default as Fade } from 'react-fade';
 import LazyLoad from 'react-lazy-load';
-import Reviews from './../Reviews/Reviews'
+import Reviews from './../Reviews/Reviews';
+import BeerSuggestions from './../BeerSuggestions/BeerSuggestions';
 
 // import BeerInfo from './BengaliBeerData_691381.json';
 
@@ -194,7 +195,10 @@ class BeerItem extends React.Component {
               </div>
               <div>{this.props.beer.beer_description}</div>
               {this.state.info !== null ? 
-                <Reviews checkins={this.state.info.checkins} />
+                <div>
+                  <BeerSuggestions suggestions={this.state.info.similar} />
+                  <Reviews checkins={this.state.info.checkins} />
+                </div>
                 :null}
             </Dialog>
           </IconButton>
