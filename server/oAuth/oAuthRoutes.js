@@ -13,8 +13,5 @@ router.route('/auth')
 router.route('/callback')
   .get(auth.getToken);
 
-router.route('/user/info/:user')
-  .get(auth.getUserInfo);
-
 module.exports = router;
 

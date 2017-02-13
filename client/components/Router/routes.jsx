@@ -6,6 +6,7 @@ import Brewery from '../Brewery/Brewery';
 import Checkout from '../Checkout/Checkout';
 import LogIn from '../LogIn/LogIn.js';
 import Register from '../Register/Register.js';
+import UserProfile from '../UserProfile/UserProfile.js'
 
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
@@ -35,8 +36,9 @@ module.exports = (
 	    <Route path="/login" component={LogIn} />
 	    <Route path="/register" component={Register} />
 	    <Route path="/checkout" component={Checkout} />
-	    <Route path="/:city" component={City} />
-	    <Route path="/:city/:brewery" component={Brewery} />
+      <Route path="/profile" component={UserProfile} />
+      <Route path="/:city" component={City} />
+      <Route path="/:city/:brewery" component={Brewery} />
 	  </Route>
 	</Router>
 );

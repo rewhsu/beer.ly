@@ -7,12 +7,16 @@ class BeerSuggestion extends React.Component {
   }
 
   render() {
+    var label = "";
+    if(this.props.suggestion.beer.beer_label) {
+      label = this.props.suggestion.beer.beer_label;
+    }
     return (
       <div className={styles.grid}>
         <div className={styles.type}>
           <div className={styles.suggestion}>
             <div className='suggestionName' >{this.props.suggestion.beer.beer_name}</div>
-            <img className='suggestionImage' src={this.props.suggestion.beer.beer_label} />
+            <img className='suggestionImage' src={label} />
             <div className='suggestionRating' >{Math.floor(this.props.suggestion.rating_score * 100)/100}/5</div>
             <div className='suggestionStyle' >{this.props.suggestion.beer.beer_style}</div>
             <div className='suggestionAbv' >{this.props.suggestion.beer.beer_abv} %ABV</div>
