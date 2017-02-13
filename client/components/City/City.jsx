@@ -4,7 +4,7 @@ import BreweryList from '../BreweryList/BreweryList';
 import styles from './City.css';
 import SearchFilter from '../SearchFilter/SearchFilter';
 import ReactSpinner from 'react-spinjs'
-import Sorting from '../Sorting/Sorting';
+
 
 class City extends React.Component {
   constructor(props) {
@@ -13,8 +13,12 @@ class City extends React.Component {
       city: this.props.params.city,
       breweries: [],
       searchInput: '',
-      showSpinner: true
+      showSpinner: true,
+      sortBtn: null,
+      sortState: 0,
+      ascending: false
     };
+
   }
 
   componentDidMount() {
@@ -51,18 +55,21 @@ class City extends React.Component {
     this.setState({searchInput: event.target.value});
   }
 
+
   render() {
     return (
       <div className={styles.wrapper}>
+
         <div className={styles.heading}>
           <h1>Breweries in {this.state.city}</h1>
           { this.state.showSpinner ? <ReactSpinner config={{top: "50%", left: "50%"}} /> : null }
           
           <p className={styles.details}>About {this.state.breweries.length} results ({(1 / this.state.breweries.length).toFixed(5)} seconds) </p>
-          
-          <div className={styles.sortingFiltering}>
-          <Sorting className={styles.sorting} breweries={this.state.breweries}/>
-          <div className={styles.filterBrewery}>
+        </div>
+
+        <div className={styles.sortingFiltering}>
+
+          <div className={styles.searchBar}>
             <input type="search"
               className="form-control" 
               placeholder="Search"
@@ -70,9 +77,8 @@ class City extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          </div>
-          <br></br>
         </div>
+
         <div className={styles.breweryList}>
           <BreweryList 
             breweries={this.state.breweries} 
