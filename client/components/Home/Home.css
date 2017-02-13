@@ -1,7 +1,8 @@
 .home {
     height: 100%;
     max-width: 100%;
-    background: url(https://s3-us-west-1.amazonaws.com/beerly/beer.jpg) no-repeat center center fixed;
+    background: 
+      url(https://pixabay.com/get/e037b70929f21c3e955e4001e64f4f90fe76e6dd1fb8174294f8c0/beer-926616.jpg) no-repeat center center fixed;
     background-size: cover;
     color: white;
     overflow-x: hidden;
@@ -23,7 +24,9 @@
 }
 
 .searchField {
-  width: 100%;
+  margin: 0 auto;
+  width: 75%;
+  text-align: center;
 }
 
 .register {
@@ -40,4 +43,8 @@
   display: flex;
   align-items: right;
   justify-content: flex-end;
+}
+
+input {
+  margin: 0 auto;
 }

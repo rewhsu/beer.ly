@@ -21,18 +21,19 @@
   background: none;
   border-bottom: none;
   box-shadow: none;
+
 }
 
 .logo {
   margin: 0;
   padding: 0;
   font-size: 40px;
-  color: #444;
+  color: rgba(0,0,0,0.5);
 }
 
 .lightLogo {
   composes: logo;
-  color: white;
+  color: rgba(0,0,0,0.5);
 }
 
 .link {
@@ -42,4 +43,21 @@
 .testing {
   float: left;
   margin-right: 250px;
+}
+
+.login {
+  color: white;
+  float: left;
+  margin-left: 50px;
+}
+
+.profile {
+  color: white;
+  float: left;
+}
+
+
+a:hover, a:focus {
+  color: inherit;
+  text-decoration: none;
 }

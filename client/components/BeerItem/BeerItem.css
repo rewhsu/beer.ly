@@ -2,6 +2,9 @@
   text-align: center;
   font-weight: bold;
   font-size: 1.3em;
+  padding: 0px 10px 10px 10px;
+  height: 30px;
+  line-height: 2;
 }
 
 .cell {
@@ -26,9 +29,8 @@
   background-color: white;
   height: 40px;
   width: 75%;
-  margin: 10px auto;
+  margin-top: 15px;
   padding: 0 20px;
-
   transition: 0.3s ease-in;
   text-transform: uppercase;
 
@@ -47,11 +49,9 @@
   display: block;
   /*max-width:124px;*/
   /*width: auto;*/
-  height: 250px;
+  height: 200px;
   text-align: center;
-  padding: 10px 0;
-  margin: 0 auto;
-
+  margin: 10px auto;
 }
 
 .description {
@@ -77,6 +77,23 @@
 .rating:hover
 .rating:focus {
   
+}
+
+.abv {
+  margin-top: 12px;
+}
+
+.description {
+  margin-top: 12px;
+}
+
+.rating {
+  margin-top: 15px;
+
+}
+
+p {
+  float: none;
 }
 
 /* Tablet (medium) screens */

@@ -131,14 +131,14 @@ class BeerItem extends React.Component {
     // Handles situation when brewery does not supply information
     const abvHandler = () => {
       return (this.props.beer.beer_abv) ?
-        (<strong className={styles.abv}>{this.props.beer.beer_abv}% ALC/VOL</strong>) :
-        (<strong className={styles.abv}>_.__% ALC/VOL</strong>);
+        (<strong>{this.props.beer.beer_abv}% ALC/VOL</strong>) :
+        (<strong>_.__% ALC/VOL</strong>);
     };
 
     const descriptionHandler = () => {
       return (this.props.beer.beer_style) ?
-        (<p className={styles.description}>{this.props.beer.beer_style}</p>) :
-        (<p className={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed...</p>);
+        (<p>{this.props.beer.beer_style}</p>) :
+        (<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed...</p>);
     };
 
     const ratingHandler = () => {
@@ -152,7 +152,7 @@ class BeerItem extends React.Component {
         }
       }
       return (
-        <div className="rating">
+        <div>
           {starArr}
         </div>
       );
@@ -172,8 +172,7 @@ class BeerItem extends React.Component {
               open={this.state.open}
               autoScrollBodyContent={true}
             >
-              <br />
-              <br />
+            <br></br>
               <div className={styles.label} >
                 <img src={this.pic()} className={styles.label} />
                 <div className={styles.type}>
@@ -200,7 +199,11 @@ class BeerItem extends React.Component {
         </div>
         <img src={mockImages[this.imageHandler()]} className={styles.image} />
         { /* Optional information handlers */ }
-        { abvHandler() } { descriptionHandler() }{ ratingHandler() }
+        <div>
+          <div className={styles.abv}>{ abvHandler() } </div>
+          <div className={styles.description}>{ descriptionHandler() }</div>
+          <div className={styles.rating}>{ ratingHandler() }</div>
+        </div>
         <button className={styles.addButton} onClick={handleClick} >Add to Flight</button>
 
       </div>
