@@ -36,7 +36,9 @@ module.exports = (
 	    <Route path="/login" component={LogIn} />
 	    <Route path="/register" component={Register} />
 	    <Route path="/checkout" component={Checkout} />
-      <Route path="/profile" component={UserProfile} />
+      <Route path="/profile" component={UserProfile}>
+        <Route path="/profile/:username" component={UserProfile} />
+      </Route>
       <Route path="/:city" component={City} />
       <Route path="/:city/:brewery" component={Brewery} />
 	  </Route>

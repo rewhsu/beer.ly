@@ -20,7 +20,16 @@ class UserProfile extends React.Component {
 
   componentDidMount() {
     var context = this;
-    axios.get('https://localhost:8008/api/user/andrewhsu42')
+    var username;
+    console.log(this.props.params);
+    if(this.props.params.username) {
+      username = this.props.params.username;
+    } else {
+      username = ''
+    }
+      
+    var url = `https://localhost:8008/api/user/${username}`;
+    axios.get(url)
       .then((response) => {
         context.handleSuccess(response.data)
       })
