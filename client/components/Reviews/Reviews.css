@@ -1,4 +1,13 @@
 .preScrollableFixed {
   height: 600px;
   overflow: scroll;
+  margin-top: 120px;
+}
+
+.grid {
+	margin-top: 0px;
+}
+
+.grid h3 {
+	margin-bottom: 30px;
 }

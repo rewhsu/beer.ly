@@ -8,17 +8,15 @@ class UserCheckins extends React.Component {
   }
 
   render() {
-    console.log('UserCheckins PROPS', this.props);
     return (
-      <div className={styles.grid}>
+      <div className={styles.wrapper}>
         <div className={styles.type}>
-          <div className={styles.preScrollableFixed}>
-            <h3>User Checkins</h3>
-            {console.log(this.props)}
-            {this.props.checkins.items.map((checkin) =>
-              <Review checkin={checkin} isProfile={true} />
+     
+            <h3 className={styles.heading}>User Checkins</h3>
+            {this.props.checkins.items.map((checkin, i) =>
+              <Review checkin={checkin} isProfile={true} key={i}/>
             )}
-          </div>
+        
         </div>
       </div>
     );

@@ -12,22 +12,35 @@ class Review extends React.Component {
     if(this.props.isProfile) {
       isNotReview = {
         display: 'none'
+
       }
     }
     if(this.props.isReview) {
       isNotProfile = {
-        display: 'none'
+        display: 'none',
+        height: '150px',
+
       }
     }
     return (
       <div className={styles.grid}>
         <div className={styles.type}>
           <img style={isNotReview} className={styles.image} src={this.props.checkin.user.user_avatar} />
-          <div style={isNotReview} >{this.props.checkin.user.user_name}</div>
-          <div style={isNotProfile} >{this.props.checkin.beer.beer_name}</div>
-          <img style={isNotProfile} className={styles.image} src={this.props.checkin.beer.beer_label} />
-          <div className='reviewRating' >Rating: {this.props.checkin.rating_score}</div>
-          <div className='reviewComment' >Comment: {this.props.checkin.checkin_comment}</div>
+          <div style={isNotReview} className={styles.userName}>{this.props.checkin.user.user_name}</div>
+          
+          <div className={styles.beerInfo}>
+            <div>
+              <img style={isNotProfile} className={styles.beerLabel} src={this.props.checkin.beer.beer_label} />
+              <div style={isNotProfile} className={styles.beerName}>{this.props.checkin.beer.beer_name}</div>
+            </div>
+      
+            <div className={styles.reviewComment}>
+              <div>Rating: {this.props.checkin.rating_score}</div>
+              <br></br>
+              <div>Comment: {this.props.checkin.checkin_comment}</div>
+            </div>
+          </div>
+
         </div>
       </div>
     );

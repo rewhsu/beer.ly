@@ -2,7 +2,7 @@
     height: 100%;
     max-width: 100%;
     background: 
-      url(https://pixabay.com/get/e037b70929f21c3e955e4001e64f4f90fe76e6dd1fb8174294f8c0/beer-926616.jpg) no-repeat center center fixed;
+      url(https://cnt-01.content-na.drive.amazonaws.com/cdproxy/templink/39ofqVdTnrFZm25NpYkJAXtGDMKxA8bvAo_9B-EQX4EpX92IB?viewBox=3360%2C2240) no-repeat center center fixed;
     background-size: cover;
     color: white;
     overflow-x: hidden;
@@ -47,4 +47,14 @@
 
 input {
   margin: 0 auto;
+}
+
+h3:hover, h3:focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: inherit;
+  text-decoration: none;
 }
