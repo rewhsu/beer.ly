@@ -56,9 +56,6 @@ class Beers extends React.Component {
       });
   }
 
-  handleSuccess(beers) {
-  
-  }
 
   handleError(error) {
     console.log(error);

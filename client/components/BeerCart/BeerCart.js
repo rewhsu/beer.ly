@@ -46,7 +46,7 @@ class BeerCart extends React.Component {
 
   const checkout = this.props.beers.length === cartSize ? <div>{button}</div> : null;
 
-  const saveFlight = <button onClick={this.saveFlight.bind(this)}>saveFlight</button>
+  const saveFlight = <button onClick={this.saveFlight.bind(this)}>Save Flight</button>
   
   return (
     <div className={styles.movingUp}>
