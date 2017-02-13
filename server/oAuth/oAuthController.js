@@ -42,26 +42,3 @@ exports.getToken = function(req, res) {
     res.redirect('https://localhost:8008');
   })
 }
-
-var fetchDataByMethod = function(method) {
-  method = method || 'user/info';
-  const api = {
-      client_id: config.untappdKey,
-      url: 'https://api.untappd.com/v4/',
-      method: method,
-      token: process.env.ACCESS_TOKEN
-    };
-  return utils.fetchUntappdAuth(api);
-}
-
-exports.getUserInfo = function(req, res) {
-  var user = req.params.user;
-  return fetchDataByMethod(`user/info/${user}`)
-  .then((response) => {
-    console.log(response);
-    return (JSON.stringify(response));
-  })
-  .catch(function(err) {
-    console.error(err);
-  })
-}

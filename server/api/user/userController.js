@@ -14,7 +14,19 @@ var fetchDataByMethod = function(method) {
   return utils.fetchUntappdAuth(api);
 }
 
+
 exports.get = (req, res) => {
+  return fetchDataByMethod(`user/info/`)
+  .then((response) => {
+    console.log('USER INFO &&&&', response);
+    res.send(JSON.stringify(response));
+  })
+  .catch(function(err) {
+    console.error(err);
+  })
+};
+
+exports.getUserInfo = (req, res) => {
   var user = req.params.user;
   return fetchDataByMethod(`user/info/${user}`)
   .then((response) => {
