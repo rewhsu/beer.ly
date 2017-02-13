@@ -1,7 +1,7 @@
 'use strict';
 
-const utils = require('../utils/helpers');
-const config = require('../../config/apiKeys.js');
+const utils = require('../api/utils/helpers');
+const config = require('../config/apiKeys.js');
 var axios = require('axios');
 var UntappdClient = require("node-untappd");
 
@@ -12,7 +12,7 @@ var clientSecret = config.untappdSecret;
 var debug = false;
 
 //The user we want to lookup for this example.
-var lookupuser = "arei";
+// var lookupuser = "arei";
 
 // Create Client
 var Untappd = new UntappdClient(debug);

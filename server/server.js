@@ -8,7 +8,7 @@ const ssl = require('./middleware/ssl.js');
 const config = require('./config/config');
 const api = require('./api/api');
 const auth = require('./auth/auth');
-const oauth2 = require('./api/oAuth/oAuthRoutes');
+const oauth2 = require('./oAuth/oAuthRoutes');
 
 // Connect to database
 mongoose.connect(config.database.local);
