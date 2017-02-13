@@ -1,0 +1,11 @@
+.recentBrew {
+  text-align: center;
+  width: 150px;
+  display: inline-block;
+  float: left;
+  padding: 10px;
+}
+
+.brewImage {
+  width: 100px;
+}

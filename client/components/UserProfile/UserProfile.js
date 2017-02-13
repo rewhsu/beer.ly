@@ -1,19 +1,68 @@
-import React, { PropTypes } from 'react';
-import BeerItem from '../BeerItem/BeerItem';
-import styles from './BeerList.css';
+import React from 'react';
+import styles from './UserProfile.css';
+import RecentBrews from './../RecentBrews/RecentBrews.js'
+import UserInfo from './../UserInfo/UserInfo.js'
 
-const BeerList = (props) => {
-  return (
-    <div className={styles.grid}>
+import axios from 'axios'
 
-    </div>
-  );
+class UserProfile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userInfo: null,
+      recentBrews: null
+    }
+    this.handleSuccess = this.handleSuccess.bind(this);
+    this.handleError = this.handleError.bind(this);
+  }
+
+  componentDidMount() {
+    var context = this;
+    axios.get('https://localhost:8008/api/user/andrewhsu42')
+      .then((response) => {
+        context.handleSuccess(response.data)
+      })
+      .catch((error) => {
+        context.handleError(error);
+      });
+  }
+
+  handleSuccess(response) {
+    console.log('SUCCESS', response);
+    this.setState({
+      userInfo: response.response.user,
+      recentBrews: response.response.user.recent_brews
+    });
+  }
+
+  handleError(error) {
+    console.log(error);
+  }
+
+  render() {
+    return (
+      <div className={styles.grid}>
+        <div className={styles.type}>
+          <div className={styles.container}>
+            <div className='preScrollableFixed'>
+              <h1>User Profile</h1>
+              {this.state.userInfo !== null ?
+              <div className=''>
+                <UserInfo userInfo={this.state.userInfo} />
+                <RecentBrews recentBrews={this.state.recentBrews} />
+              </div>
+              :null}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  
+}
+
+UserProfile.propTypes = {
 };
 
-BeerList.propTypes = {
-  beers: PropTypes.array,
-  addToCart: PropTypes.func
-};
-
-
-export default BeerList;
+export default UserProfile;
