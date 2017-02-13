@@ -54,7 +54,7 @@ class Cart extends React.Component {
           onRequestChange={(open) => this.setState({open})}
         > 
           <List>
-            <Subheader>Recent chats</Subheader>
+            <Subheader>Shopping Cart</Subheader>
             {beersInCart}
             <button>Checkout</button>
           </List>
