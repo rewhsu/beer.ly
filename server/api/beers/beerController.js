@@ -2,7 +2,6 @@
 
 const utils = require('../utils/helpers');
 const config = require('../../config/apiKeys.js');
-const oauth = require('../oauth/oAuthController.js');
 
 function fetchBreweryByName(name) {
   const api = {

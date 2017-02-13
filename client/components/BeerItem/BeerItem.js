@@ -7,6 +7,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { default as Fade } from 'react-fade';
 import LazyLoad from 'react-lazy-load';
+import Reviews from './../Reviews/Reviews';
+import BeerSuggestions from './../BeerSuggestions/BeerSuggestions';
 
 
 const mockImages = [
@@ -54,18 +56,25 @@ class BeerItem extends React.Component {
       });
   }
 
-  // handleSuccess(info) {
-  //   this.setState({
-  //     info: info.response.beer
-  //   });
-  // }
-
-
   pic() {
     if (this.state.info) {
-      return this.state.info.beer_label_hd
+      return this.state.info.beer_label_hd;
+    } else {
+      return 'http://i.giphy.com/vbW83rOm8JZYI.gif';
     }
   }
+
+  // reviewsHandler() {
+  //   if (this.state.info) {
+  //     return (
+  //       <div>
+  //         {this.state.info.checkins.items.map((item) => {
+  //           <div>{item.rating_score}</div>
+  //         })}
+  //       </div>
+  //     )
+  //   }
+  // }
 
   handleError(error) {
     console.log(error);
@@ -165,21 +174,23 @@ class BeerItem extends React.Component {
             >
               <br />
               <br />
-              <div>
+              <div className={styles.label} >
                 <img src={this.pic()} className={styles.label} />
-                <div className={styles.label}>
-                  <p>Style: {this.props.beer.beer_style}</p>
-                  <br />
-                  <p>IBU: {this.props.beer.beer_ibu}</p>
-                  <br />
-                  <p>ABV: {this.props.beer.beer_abv}%</p>
-                  <br />
-                  <p>Average rating: {this.props.beer.rating_score}</p>
-                  <br />
+                <div className={styles.type}>
+                  <div>Style: {this.props.beer.beer_style}</div>
+                  <div>IBU: {this.props.beer.beer_ibu}</div>
+                  <div>ABV: {this.props.beer.beer_abv}%</div>
+                  <div>Average rating: {this.props.beer.rating_score}</div>
                 </div>
                 <br />
-                <div className={styles.label}>{this.props.beer.beer_description}</div>
               </div>
+              <div>{this.props.beer.beer_description}</div>
+              {this.state.info !== null ? 
+                <div>
+                  <BeerSuggestions suggestions={this.state.info.similar} />
+                  <Reviews checkins={this.state.info.checkins} />
+                </div>
+                :null}
             </Dialog>
           </IconButton>
         </div>
