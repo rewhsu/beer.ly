@@ -12,16 +12,25 @@ import BeerSuggestions from './../BeerSuggestions/BeerSuggestions';
 
 
 const mockImages = [
-  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer1.png',
-  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer2.png',
-  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer3.png',
-  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer4.png',
-  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer5.png',
-  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer6.png',
-  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer7.png',
-  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer8.png',
-  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer9.png',
-  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer10.png'
+  'https://imgur.com/dESzTkZ.png',
+  'https://imgur.com/dESzTkZ.png',
+  'https://imgur.com/yNS6rMN.png',
+  'https://i.imgur.com/9adVeEX.png',
+  'https://imgur.com/dESzTkZ.png',
+  'https://imgur.com/xxr7VhY.png',
+  'https://imgur.com/dESzTkZ.png',
+  'https://i.imgur.com/9adVeEX.png',
+  'https://imgur.com/dESzTkZ.png',
+  'https://imgur.com/dESzTkZ.png',
+  // 'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer2.png',
+  // 'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer3.png',
+  // 'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer4.png',
+  // 'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer5.png',
+  // 'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer6.png',
+  // 'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer7.png',
+  // 'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer8.png',
+  // 'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer9.png',
+  // 'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer10.png'
 ];
 
 
