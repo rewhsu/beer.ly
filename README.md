@@ -1,7 +1,7 @@
 # beer.ly
 Delivery beer flights. Beerly is an app that allows users to have beer flights be delivered to them.
-
-<img src="https://s3-us-west-1.amazonaws.com/beer.ly/output_yRTFf5.gif"></img>
+![screen shot 2017-05-11 at 10 33 25 pm](https://cloud.githubusercontent.com/assets/12904628/25983533/358a5dc4-369a-11e7-9ce2-5ed88314b6bf.png)
+![screen shot 2017-05-11 at 10 36 40 pm](https://cloud.githubusercontent.com/assets/12904628/25983552/5c3a6e00-369a-11e7-8cb3-6e0e82629046.png)
 
 ### Tech Stack
 1. Node / Express
