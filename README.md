@@ -1,5 +1,6 @@
 # beer.ly
-Delivery beer flights. Beerly is an app that allows users to have beer flights be delivered to them.
+Beer.ly is an application that is designed to connect users to their local breweries. View nearby beers on tap, order flights of beer, and see recommendations from your friends on Untappd.
+
 ![screen shot 2017-05-11 at 10 33 25 pm](https://cloud.githubusercontent.com/assets/12904628/25983533/358a5dc4-369a-11e7-9ce2-5ed88314b6bf.png)
 ![screen shot 2017-05-11 at 10 36 40 pm](https://cloud.githubusercontent.com/assets/12904628/25983552/5c3a6e00-369a-11e7-8cb3-6e0e82629046.png)
 
