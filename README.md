@@ -19,7 +19,7 @@ Beer.ly is an application that is designed to connect users to their local brewe
 
 ### Fork/Clone
 ```
-git clone https://github.com/ntoung/beer.ly.git
+git clone https://github.com/rewhsu/beer.ly.git
 ```
 
 ### Install Dependencies
